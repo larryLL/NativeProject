@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 第一步： 开启spring容器的自动扫描功能 -->
+	<context:component-scan base-package="com.shool.ctp"></context:component-scan>
+	<!-- 第二步：引入外部数据库配置文件jdbc.properties资源 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<!-- 第三步：配置数据源和数据源连接池：C3P0,DBCP2,DRUID  本次使用DRUID -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<!-- <property name="druid.driverClassName" value="${jdbc.driver}"></property> -->
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<!-- 配置连接池中，创建连接时，采用异步|同步方式来进行创建，默认是：异步 -->
+		<property name="asyncInit" value="true" />
+		<!-- 配置额外的扩展插件:stat 代表开启监控程序，wall 代表开启防SQL注入功能 -->
+		<property name="filters" value="wall" />
+		<!-- 如果有定制化的过滤器，可以使用proxyFilters 去做一个引用 -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+				<ref bean="log-filter" />
+			</list>
+		</property>
+		
+	</bean>
+	
+	<!-- 定制化的监控过滤器 -->
+	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+		<property name="slowSqlMillis" value="200" />
+		<property name="logSlowSql" value="true" />
+	</bean>
+
+	<!-- 定制化的日志过滤器 -->
+	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
+		<!-- 开启数据源相关的日志记录 -->
+		<property name="dataSourceLogEnabled" value="true" />
+		<!-- 连接错误时，记录相关日志 -->
+		<property name="connectionLogErrorEnabled" value="true"></property>
+		<!-- 预编译对象，发生错误时记录相关日志 -->
+		<property name="statementLogErrorEnabled" value="true"></property>
+	</bean>
+	
+	<!-- 第四步：配置sessionFactory  session工厂   该类在mybatis整合spring的jar中 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 使用数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 设置bean的别名 -->
+		<property name="typeAliasesPackage" value="com.shool.ctp.bean"></property>
+		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+	</bean>
+	
+	<!-- maybatis：配置MapperScanner -->
+	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描SQL语句的xml配置文件-->
+		<property name="basePackage"
+		value="com.shool.ctp.goodsmag.mapper,
+		com.shool.ctp.usermag.mapper,
+		com.shool.ctp.ordermag.mapper,
+		com.shool.ctp.testmag.mapper,
+		"></property>
+		<!--<property name="basePackage"
+				  value="mapper"></property>-->
+		<!-- 使用sqlsessionFactory工厂 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- maybatis（不用，maybatis用来查询，不做事务处理）：配置事务管理器 使用spring的事务管理器，该管理器在spring-jdbc的dataSoures中-->
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> -->
+	
+	<!-- hibernate：配置hibernate的session工厂 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 扫描实体类，实现表和类的映射关联关系 -->
+		<property name="packagesToScan">
+			<array>
+				<value>com.shool.ctp.bean</value>
+			</array>
+		</property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<!-- 设置方言 -->
+				<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="show_sql">true</prop>
+				<prop key="format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- hibernate： 设置事务管理器 -->
+	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- hibernate：配置hibernate模板 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- hibernate处理事务，：配置hibernate的事务管理方式：声明式事务管理的第一种方式：使用AOP切面进行事务管理 -->
+	<!-- 设置通知 -->
+	<tx:advice transaction-manager="hibernateTransactionManager" id="advice">
+		<tx:attributes>
+			<tx:method name="*" read-only="true" propagation="SUPPORTS"/>
+			<tx:method name="add*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="insert*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="save*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="create*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="update*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="change*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="modify*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="delete*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+			<tx:method name="remove*" read-only="false" rollback-for="java.lang.Exception" propagation="REQUIRED"/>
+		</tx:attributes>
+		
+	</tx:advice>
+	
+	<!-- 配置aop切面中的pointcut切点，应用如上设置的advice通知 -->
+	<aop:config>
+		<!-- 设置切入点的范围 -->
+		<aop:pointcut expression="execution(* com.shool.ctp.*mag.service.impl.*.*(..))" id="pointcut"/>
+		<!-- 给aop切面设置切入点和通知 -->
+		<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+	<!-- 开启AOP切面的动态代理支持 -->
+	<aop:aspectj-autoproxy/>
+</beans>
+
+

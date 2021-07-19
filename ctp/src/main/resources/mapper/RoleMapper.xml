@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd,">
+<mapper namespace="com.shool.ctp.usermag.mapper.RoleMapper">
+	<!-- 结果集的一行数据映射到DoctorBean类中 -->
+	<resultMap type="RoleBean" id="roleMap">
+		<id property="id" column="id" javaType="int"/>
+		<result property="roleName" column="role_name" javaType="string"/>
+		<result property="roleDetail" column="role_detail" javaType="string"/>
+	</resultMap>
+
+	<select id="getRoleById" resultMap="roleMap">
+		select * from t_role where id = #{id}
+	</select>
+
+	<select id="allRole" resultMap="roleMap">
+		select * from t_role
+	</select>
+	
+</mapper>

@@ -1,0 +1,667 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--meta tags-->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Services Listing HTML5 CSS3 template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, services, listing">
+    <meta name="author" content="Ui-DesignLab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--end meta tags-->
+
+    <title>OldsMarket Search Results</title>
+    <!--stylesheets-->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/animate.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!--end stylesheets-->
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo%7CNosifer%7CPoppins%7CQuicksand:700%7CRaleway%7CTangerine%7CHind+Vadodara" rel="stylesheet">
+    <!--end google fonts-->
+    <style>
+        .site-user-img img{
+            width: 34px;
+            height: 34px;
+        }
+    </style>
+</head>
+<body>
+     
+
+
+<!--navigation bars-->
+
+<div class="sit-bg">
+    <nav class="site-top-nav transparent">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="">
+                <strong>SchoolOldsMarket</strong>
+            </a>
+        </div>
+        <ul class="site-menu">
+            <li>
+                <a href="index.html">主页 </a>
+            </li>
+            <li>
+                <a href="#">商品搜索 <i class="fa fa-angle-down"></i></a>
+                <ul class="nav-dropdown">
+                    <li><a href="items.html">商品列表</a></li>
+                    <li><a href="search-results.html">商品搜索</a></li>
+                </ul>
+            </li>
+            <li><a href="#">控制面板 <i class="fa fa-angle-down"></i></a>
+                <ul class="nav-dropdown">
+                    <li><a href="dash-profile.html">个人信息</a></li>
+                    <li><a href="dash-items.html">商品列表</a></li>
+                    <li><a href="dash-sales.html">交易记录</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="cart.html">购物车</a>
+            </li>
+            <li>
+                <!--<a href="login-register.html" class="ui-btn ui-btn-info">登陆 / 注册</a>-->
+                <div class="site-user">
+                    <div class="site-user-img">
+                        <img src="img/avatar2.jpg" alt="">
+                        <span class="online"></span>
+                    </div>
+                    <a href="dash-profile.html" class="user-name"><strong>Emma Viola</strong></a>
+                </div>
+            </li>
+        </ul>
+        <i class="nav-toggle fa fa-bars"></i>
+    </nav>
+</div>
+<div id="side-nav" class="side-nav">
+    <div class="side-nav-menu perfect-scroll">
+        <div class="text-logo">
+            <a href="index.html"><h3>SOM平台</h3></a>
+        </div>
+        <div class="site-user">
+            <div class="site-user-img">
+                <img src="img/avatar2.jpg" alt="">
+                <span class="online"></span>
+            </div>
+            <a href="#" class="user-name"><strong>Emma Viola</strong></a>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html" class="current">首页</a></li>
+            <li><a href="items.html">商品列表</a></li>
+        </ul>
+        <div class="logout"><a href="login-register.html">退出登陆</a></div>
+    </div>
+</div>
+<!--end navigation bars-->
+
+<!--banner-->
+<div class="search-banner back-photo">
+    <h5>请输入你想要搜索的 <strong class="ui-text-info">商品</strong> 名称</h5>
+    <form action="#" method="post">
+        <div class="mega-search">
+            <input class="form-control" id="searchGoods" type="text" placeholder="搜索你想要的商品...">
+            <i class="fa fa-search"></i>
+        </div>
+    </form>
+</div>
+<!--end banner-->
+
+<!--search results-->
+<div class="results-wrapper">
+    <div class="filter-section">
+        <div class="filter-group">
+            <strong>商品类型:</strong>
+            <div id="types">
+                <!--<label class="label&#45;&#45;radio">
+                    <input id="radio1" value="" type="radio" name="radios" class="radio" checked>
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>全选</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio2" type="radio" name="radios" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>食品</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio3" type="radio" name="radios" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>汽车</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio4" type="radio" name="radios" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>服装</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio5" type="radio" name="radios" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>电子产品</i>
+                </label>-->
+            </div>
+        </div>
+        <!--<div class="filter-group">
+            <strong>时间:</strong>
+            <div id="dateTimes">
+                <label class="label&#45;&#45;radio">
+                    <input id="radio6" type="radio" name="radios2" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>最新上架</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio7" type="radio" name="radios2" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>近一周</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio8" type="radio" name="radios2" class="radio" checked>
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>近一个月</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio9" type="radio" name="radios2" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>今年</i>
+                </label>
+                <label class="label&#45;&#45;radio">
+                    <input id="radio10" type="radio" name="radios2" class="radio">
+                    <span class="outer"><span class="inner"></span></span>
+                    <i>以前的商品</i>
+                </label>
+            </div>
+        </div>-->
+        <!--<div class="filter-group">
+            <strong>By Area:</strong>
+            <label class="label&#45;&#45;checkbox">
+                <input type="checkbox" class="checkbox">
+                <i>Nearest</i>
+            </label>
+            <label class="label&#45;&#45;checkbox">
+                <input type="checkbox" class="checkbox">
+                <i>Within 50 Sqkm</i>
+            </label>
+            <label class="label&#45;&#45;checkbox">
+                <input type="checkbox" class="checkbox" checked>
+                <i>Within 250 Sqkm</i>
+            </label>
+            <label class="label&#45;&#45;checkbox">
+                <input type="checkbox" class="checkbox">
+                <i>Farthest</i>
+            </label>
+        </div>-->
+    </div>
+    <div class="results-section">
+        <div class="sort-sec">
+            <div>
+                <strong>排序方式:</strong>
+                <a href="javascript:getItems(resultItems,1,{'orderName':'createTime','orderType':'desc'})">发布日期</a>
+                |
+                <a href="javascript:getItems(resultItems,1,{'orderName':'price','orderType':'asc'})">价格从低到高</a>|
+                <a href="javascript:getItems(resultItems,1,{'orderName':'price','orderType':'desc'})">价格从高到低</a>
+            </div>
+            <a href="javascript:getItems(resultItems,1)" ><span>刷新</span><i class="fa fa-refresh"></i></a>
+        </div>
+        <div class="result-items">
+            <div class="result-item">
+                <div class="result-item-img">
+                    <div>
+                        <img src="img/items/l-item4.png" alt="">
+                    </div>
+                </div>
+                <div class="result-item-info">
+                    <a href="item-detail.html"><strong>Your Item title here</strong></a>
+                    <p>
+                        Rham beef ribs jowl kevin. Doner sirloin boudin filet mignon capicola.
+                        Rham beef ribs jowl kevin. Doner sirloin boudin filet .
+                    </p>
+                </div>
+                <div class="result-item-price">
+                    <span>Sale At:</span>
+                    <h3>$99.99</h3>
+                    <a href="cart.html" class="add-to-cart">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                </div>
+            </div>
+            <div class="result-item">
+                <div class="result-item-img">
+                    <div>
+                        <img src="img/items/l-item.png" alt="">
+                    </div>
+                </div>
+                <div class="result-item-info">
+                    <a href="item-detail.html"><strong>Your Item title here</strong></a>
+                    <p>
+                        Rham beef ribs jowl kevin. Doner sirloin boudin filet mignon capicola.
+                        Rham beef ribs jowl kevin. Doner sirloin boudin filet .
+                    </p>
+                </div>
+                <div class="result-item-price">
+                    <span>Sale At:</span>
+                    <h3>$45.00</h3>
+                    <a href="cart.html" class="add-to-cart">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                </div>
+            </div>
+            <div class="result-item">
+                <div class="result-item-img">
+                    <div>
+                        <img src="img/items/l-item3.png" alt="">
+                    </div>
+                </div>
+                <div class="result-item-info">
+                    <a href="item-detail.html"><strong>Your Item title here</strong></a>
+                    <p>
+                        Rham beef ribs jowl kevin. Doner sirloin boudin filet mignon capicola.
+                        Rham beef ribs jowl kevin. Doner sirloin boudin filet .
+                    </p>
+                </div>
+                <div class="result-item-price">
+                    <span>Sale At:</span>
+                    <h3>$212.00</h3>
+                    <a href="cart.html" class="add-to-cart">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!--site pagination-->
+        <div class="site-pagination">
+            <a href="#"><i class="fa fa-angle-left"></i>&nbsp;<em>上一页</em></a>
+            <a href="#"><span><i>1</i></span></a>
+            <a href="#" class="current"><span><i>2</i></span></a>
+            <a href="#"><span><i>3</i></span></a>
+            <a href="#"><span><i>4</i></span></a>
+            <a href="#"><span><i>5</i></span></a>
+            <a href="#"><span><i>6</i></span></a>
+            <a href="#"><em>下一页</em>&nbsp;<i class="fa fa-angle-right"></i></a>
+        </div>
+        <!--end site pagination-->
+    </div>
+</div>
+<!--end search results-->
+
+<!--chat box-->
+<!--<a href="#" class="chat-box-btn"><i class="fa fa-comment icon-sw"></i></a>
+
+<div class="chat-box">
+    <div class="chat-top">
+        <section>
+            <strong>OldsMarket</strong>
+            <div class="repliers">
+                <div class="r-img">
+                    <img src="img/avatar2.jpg" alt="">
+                    <strong class="name">Megan</strong>
+                </div>
+                <div class="r-img">
+                    <img src="img/user2.jpg" alt="">
+                    <strong class="name">Brandon</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="chat-flow" id="chat-flow">
+        <p class="outbound">
+            Hallo, Anyone there?
+        </p>
+        <p class="inbound">
+            Hi, Vincent here. How may I be of service.
+        </p>
+    </div>
+    <form class="chat-form" action="#">
+        <input type="text" class="form-control chat-message" placeholder="Send a Message">
+    </form>
+</div>-->
+
+<!--end chat box-->
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="loader"><img src="img/logo.png" alt=""></div>
+</div>
+<!--end page loader-->
+
+<!--footer section-->
+<footer class="footer">
+    <div class="footer-item">
+        <strong>取得联系</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 支持</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 通知</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 社区论坛</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联盟伙伴</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联系我们</a>
+    </div>
+    <div class="footer-item">
+        <strong>疑问?</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 帮助</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联系</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 在线客服</a>
+    </div>
+    <div class="footer-item">
+        <strong>相关网站</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 脸谱网</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 微博</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 网络相册</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 视频网站</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 人际关系网</a>
+    </div>
+    <div class="footer-item">
+        <strong>资源连接</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 首页</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 产品</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 服务</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 关于我们</a>
+    </div>
+</footer>
+<div class="bottom-strip">
+    <div class="cards-accepted">
+        <em>Cards Accepted:</em>
+        <img src="img/card-logos.png" alt="">
+    </div>
+    <div class="copyright"><i class="fa fa-copyright"></i> <span>SchoolOldsMarket. 拥有相关所有权</span></div>
+    <div class="country"><!--<span>C.N</span><img src="img/USAFlag.png" alt="">--></div>
+</div>
+<!--end footer section-->
+
+<!--scripts-->
+<script src="vendor/js/jquery-3.2.1.min.js"></script>
+<script src="vendor/js/popper.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+<script src="vendor/js/alertify.js"></script>
+<script src="vendor/js/jquery.knob.min.js"></script>
+<!--[if IE]><script type="text/javascript" src="vendor/js/excanvas.js"></script><![endif]-->
+<script src="vendor/js/summernote-bs4.min.js"></script>
+<script src="vendor/js/dropzone.js"></script>
+<script src="vendor/OwlCarousel2-2.2.1/owl.carousel.min.js"></script>
+<script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="vendor/js/typed.js"></script>
+<script src="js/app.js"></script>
+<!--end scripts-->
+<script>
+
+    /**
+     * 时间戳转日期格式
+     */
+    function formatDate(timestamp) {
+        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        var D = date.getDate() + ' ';
+        return Y+M+D;
+    }
+
+
+    /*function addtocart(addBtn,flag) {
+        var curBtn = $(this);
+//.find(".result-item-info").children("a").html()
+        console.log(curBtn.attr("class"));
+        console.log(curBtn.parent().parent().eq(flag).html());
+    }*/
+
+    var resultItems = {};
+
+    /**
+     * 获取已发布的商品
+     */
+    var getItems= function (resultItems,page,order) {
+        var param = {
+            page:page,
+            limit:3,
+            goodsName:$("#searchGoods").val(),
+            goodsStatus:2,
+            typeId:$("input[type='radio']:checked").val()
+        };
+        if(order != undefined && order !=null ){
+            param["orderName"] = order.orderName;
+            param["orderType"] = order.orderType;
+        }
+        $.ajax({
+            url:"http://localhost:8080/ctp/goods/0",
+            type:"get",
+            data:param,
+            success:function (result) {
+                resultItems = result;
+                console.log(result);
+                var oneItem = result.data;
+                if( null != oneItem){
+                    $(".result-items").empty();
+                    $(".site-pagination").empty();
+                    var itemssHtml = "";
+                    for(var i = 0 ;i<oneItem.length;i++){
+                        itemssHtml += "<div class='result-item' goodsId='"+oneItem[i].id+"' number='"+oneItem[i].goodsNumber+"' vendor='"+oneItem[i].user.userName+"'>\n" +
+                            "                <div class='result-item-img'>\n" +
+                            "                    <div>\n" +
+                            "                        <img src='img/items/"+oneItem[i].image+"' alt=''>\n" +
+                            "                    </div>\n" +
+                            "                </div>\n" +
+                            "                <div class='result-item-info'>\n" +
+                            "                    <a href='item-detail.html'><strong>"+oneItem[i].goodsName+"</strong></a>\n" +
+                            "                    <p>\n" +
+                            oneItem[i].goodsDetail   +
+                            "                    </p>\n" +
+                            "                    <span>上架时间: <em class='ui-text-info'>"+formatDate(oneItem[i].createTime)+"</em></span> <span><i class='fa fa-map-marker'></i>交易地点："+oneItem[i].tradingPlace+"</span>\n" +
+                            "                </div>\n" +
+                            "                <div class='result-item-price'>\n" +
+                            "                    <span>出售价:</span>\n" +
+                            "                    <h3>$"+oneItem[i].goodsPrice+"</h3>\n" +
+                            "                    <a class='add-to-cart' flag='"+(i+1)+"'>加入购物车 <i class='fa fa-cart-plus'></i></a>\n" +
+                            "                </div>\n" +
+                            "            </div>"
+                    }
+                    $(".result-items").append(itemssHtml);
+                    var pageHtml = "";
+                    pageHtml += "<a href='javascript:void(0)' id='pre'><i class='fa fa-angle-left'></i>&nbsp;<em>上一页</em></a>";
+                    for(var i = 0;i<result.totalPage;i++){
+                        if(result.page==(i+1)){
+                            pageHtml += "<a href='javascript:void(0)' class='pageNumber current'><span><i>"+(i+1)+"</i></span></a>";
+                        }else{
+                            pageHtml += "<a href='javascript:void(0)' class='pageNumber'><span><i>"+(i+1)+"</i></span></a>";
+                        }
+                    }
+                    pageHtml += "<a href='javascript:void(0)' id='next'><i class='fa fa-angle-right'></i>&nbsp;<em>下一页</em></a>";
+                    $(".site-pagination").append(pageHtml);
+
+                    $(".result-item").on("dblclick",function (obj) {
+                        var goodsId = $(this).attr("goodsId");
+                        sessionStorage.setItem("goodsId",goodsId);
+                        console.log(goodsId);
+                        window.location.href = "item-detail.html";
+                    });
+
+                    /**
+                     * 页码点击
+                     */
+                    $(".pageNumber").on("click",function () {
+                        console.log($(this).text());
+                        getItems(result,$(this).text());
+                    });
+
+                    /**
+                     * 上一页的点击事件
+                     */
+                    $("#pre").click(function () {
+                        if(result.page ==1){
+                            getItems(result,result.page);
+                            console.log("上一页"+result.page);
+                        }else{
+                            getItems(result,result.page-1);
+                            console.log("上一页"+result.page);
+                        }
+                    });
+
+                    /**
+                     * 下一页的点击事件
+                     */
+                    $("#next").click(function () {
+                        if(result.page ==result.totalPage){
+                            getItems(result,result.totalPage);
+                            console.log("下一页"+result.totalPage);
+                        }else{
+                            getItems(result,result.page+1);
+                            console.log("下一页"+result.totalPage);
+                        }
+                    });
+
+                    /**
+                     * 加入购物车按钮
+                     */
+                    $(".add-to-cart").on("click",function () {
+                        //首先判断是否登陆
+                        var checkLogin = sessionStorage.getItem("userInfo");
+                        if(checkLogin == null && checkLogin != "undefined"){
+                            alert("未登录，请先登陆！");
+                            window.location.href="login-register.html";
+                        }else{
+                            var curBtn = $(this);
+                            var userName = curBtn.parent().parent().attr("vendor");
+                            if(userName != JSON.parse(checkLogin).userName){
+                                var goodsName = curBtn.parent().parent().find(".result-item-info a").text();
+                                var goodsPrice = curBtn.parent().parent().find(".result-item-price h3").text();
+                                goodsPrice = goodsPrice.substring(goodsPrice.lastIndexOf("$")+1);
+                                var goodsImage = curBtn.parent().parent().find("img")[0].src;
+                                goodsImage = goodsImage.substring(goodsImage.lastIndexOf("/")+1);
+                                var goodsNumber = curBtn.parent().parent().attr("number");
+                                var cart = [];
+                                var item = {
+                                    goodsNumber:goodsNumber,
+                                    goodsName:goodsName,
+                                    goodsPrice:goodsPrice,
+                                    goodsImage:goodsImage,
+                                    bayNumber:1
+                                };
+                                if($.cookie("cart") != null){
+                                    cart = JSON.parse($.cookie("cart"));
+                                    var haveGoods = false;
+                                    for(var i = 0;i < cart.length;i++){
+                                        if(cart[i].goodsName == item.goodsName){
+                                            haveGoods = true;
+                                            break;
+                                        }
+                                    }
+                                    if(!haveGoods){
+                                        cart.push(item);
+                                        $.cookie("cart",JSON.stringify(cart));
+                                        alertify.success("已添加至购物车！");
+                                    }else{
+                                        alertify.error("购物车已有该商品!");
+                                    }
+                                    console.log(cart);
+                                }else{
+                                    cart.push(item);
+                                    $.cookie("cart",JSON.stringify(cart));
+                                }
+                            }else{
+                                alertify.error("您是本商品的发布者，无法对自己的商品进行加入购物车操作！！");
+                            }
+
+                        }
+
+                    });
+                }
+                else{
+                    $(".result-items").empty();
+                    $(".site-pagination").empty();
+                    var html="";
+                    html += "<div class='not-result-item' style='font-size: 18px;color: red;margin-top: 30px'><center>“暂无商品”</center></div>";
+                    $(".result-items").append(html);
+
+                }
+                //console.log(resultItems,1);
+            },
+            error:function () {
+                var html = "";
+                html += "<div class='sale-item'>“暂无商品”</div>";
+                console.log("请求失败！");
+                $(".result-items").append(html);
+            }
+        });
+    };
+
+    getItems(resultItems,1);
+
+    /**
+     * 登陆信息
+     * @type {string | null}
+     */
+    var checkLogin = sessionStorage.getItem("userInfo");
+    if(checkLogin == null){
+        console.log("login信息为空");
+        $(".site-top-nav .site-menu > li:last-child").empty();
+        var html = "";
+
+        html += "<a href='login-register.html' class='ui-btn ui-btn-info'>登陆 / 注册</a>";
+
+        $(".site-top-nav .site-menu > li:last-child").append(html);
+
+    }else{
+        console.log(checkLogin);
+        var userInfo = JSON.parse(checkLogin);
+        $(".site-top-nav .site-menu > li:last-child").empty();
+        var html = "";
+        html += "<div class='site-user'>\n" +
+            "                    <div class='site-user-img'>\n" +
+            "                        <img src='img/userimg/"+userInfo.headPortrait+"' alt=''>\n" +
+            "                        <span class='online'></span>\n" +
+            "                    </div>\n" +
+            "                    <a href='dash-profile.html' class='user-name'><strong>"+userInfo.userName+"</strong></a>\n" +
+            "                </div>";
+        $(".site-top-nav .site-menu > li:last-child").append(html);
+    }
+
+    /**
+     * 搜索框
+     */
+    $("#searchGoods").bind("input propertychange",function (obj) {
+        getItems(resultItems,1);
+        console.log(this.value);
+    });
+
+    /**
+     * 商品类型
+     */
+    function getTypes() {
+        /**
+         * 商品类型列表
+         */
+        $.ajax({
+            url:"http://localhost:8080/ctp/goods/type/0",
+            type:"get",
+            data:{},
+            success:function (result) {
+                var typeData = result.rows;
+                console.log(result);
+                $("#types").empty();
+                var htmlItemType = "<label class='label--radio'>\n" +
+                    "                    <input id='' type='radio' value='' name='radios' class='radio' checked>\n" +
+                    "                    <span class='outer'><span class='inner'></span></span>\n" +
+                    "                    <i>全选</i>\n" +
+                    "                </label>";
+                for(var i = 0;i<typeData.length; i++){
+                    // htmlItemType += "<option value='"+typeData[i].id+"'>"+typeData[i].typeName+"</option>";
+                    htmlItemType +="<label class='label--radio'>\n" +
+                        "                    <input id='radio"+typeData[i].id+"' value='"+typeData[i].id+"' type='radio' name='radios' class='radio'>\n" +
+                        "                    <span class='outer'><span class='inner'></span></span>\n" +
+                        "                    <i>"+typeData[i].typeName+"</i>\n" +
+                        "                </label>"
+                }
+                $("#types").append(htmlItemType);
+
+                $(".radio").on("click",function () {
+                    getItems(resultItems,1);
+                });
+
+            },
+            error:function () {
+                alert("请求出错！");
+            }
+        });
+    }
+
+    getTypes();
+</script>
+</body>
+</html>

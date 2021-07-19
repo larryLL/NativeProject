@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--meta tags-->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Services Listing HTML5 CSS3 template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, services, listing">
+    <meta name="author" content="Ui-DesignLab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--end meta tags-->
+
+    <title>OldsSchoolMarket Items</title>
+    <!--stylesheets-->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/animate.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!--end stylesheets-->
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo%7CNosifer%7CPoppins%7CQuicksand:700%7CRaleway%7CTangerine%7CHind+Vadodara" rel="stylesheet">
+    <!--end google fonts-->
+
+    <style>
+        .sale-item .sale-item-img img {
+            width: 273px;
+            height: 204px;
+            border-radius: 4px 4px 0 0;
+        }
+        .site-user-img img{
+            width: 34px;
+            height: 34px;
+        }
+    </style>
+</head>
+<body>
+     
+
+
+<!--navigation bars-->
+<div class="sit-bg">
+    <nav class="site-top-nav transparent">
+    <div class="logo">
+        <a href="index.html">
+            <img src="img/logo.png" alt="">
+            <strong>SchoolOldsMarket</strong>
+        </a>
+    </div>
+    <ul class="site-menu">
+        <li>
+            <a href="index.html">主页 </a>
+        </li>
+        <li>
+            <a href="#">商品搜索 <i class="fa fa-angle-down"></i></a>
+            <ul class="nav-dropdown">
+                <li><a href="items.html">商品列表</a></li>
+                <li><a href="search-results.html">商品搜索</a></li>
+            </ul>
+        </li>
+        <li><a href="#">控制面板 <i class="fa fa-angle-down"></i></a>
+            <ul class="nav-dropdown">
+                <li><a href="dash-profile.html">个人信息</a></li>
+                <li><a href="dash-items.html">商品列表</a></li>
+                <li><a href="dash-sales.html">交易记录</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="cart.html">购物车</a>
+        </li>
+        <li>
+            <!--<a href="login-register.html" class="ui-btn ui-btn-info">登陆 / 注册</a>-->
+            <div class="site-user">
+                <div class="site-user-img">
+                    <img src="img/avatar2.jpg" alt="">
+                    <span class="online"></span>
+                </div>
+                <a href="dash-profile.html" class="user-name"><strong>Emma Viola</strong></a>
+            </div>
+        </li>
+    </ul>
+    <i class="nav-toggle fa fa-bars"></i>
+</nav>
+</div>
+<div id="side-nav" class="side-nav">
+    <div class="side-nav-menu perfect-scroll">
+        <div class="text-logo">
+            <a href="index.html"><h3>SOM平台</h3></a>
+        </div>
+        <div class="site-user">
+            <div class="site-user-img">
+                <img src="img/avatar2.jpg" alt="">
+                <span class="online"></span>
+            </div>
+            <a href="#" class="user-name"><strong>Emma Viola</strong></a>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html" class="current">首页</a></li>
+            <li><a href="items.html">商品列表</a></li>
+        </ul>
+        <div class="logout"><a href="login-register.html">退出登陆</a></div>
+    </div>
+</div>
+<!--end navigation bars-->
+
+<!--banner-->
+<div class="items-banner back-img">
+    <h5>这里可以快速找到你想要的 <strong class="ui-text-info">商品</strong></h5>
+    <form action="#" method="post">
+        <div class="mega-search">
+            <input class="form-control" id="search" type="text" placeholder="请在这儿输入你想要搜索的商品名...">
+            <i class="fa fa-search"></i>
+        </div>
+        <button type="button" id="searchBtn" class="ui-btn ui-btn-info btn-shadow"><strong>快速搜索</strong></button>
+    </form>
+</div>
+<!--end banner-->
+
+
+<!--items wrapper-->
+<div class="items-wrapper">
+    <div class="items-sort">
+        <strong>新发布的商品</strong>
+        <div>
+            <span>排序:</span>
+            <a href="#">日期</a>
+            <a href="#">价格</a>
+            <a href="#">商品名</a>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app3.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$637.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/lister.jpg" alt=""></div>
+                    <div>
+                        <strong>Emilia Jones</strong>
+                        <span><i class="fa fa-map-marker"></i><em>Boston, MA</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app4.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$9996.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/avatar2.jpg" alt=""></div>
+                    <div>
+                        <strong>Carol Mitch</strong>
+                        <span><i class="fa fa-map-marker"></i><em>Wales, CA</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app5.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$63.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/avatar.jpg" alt=""></div>
+                    <div>
+                        <strong>Viola Wat</strong>
+                        <span><i class="fa fa-map-marker"></i><em>Nairobi, KE</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$120.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/user2.jpg" alt=""></div>
+                    <div>
+                        <strong>Brandon Kan</strong>
+                        <span><i class="fa fa-map-marker"></i><em>New Orleans, US</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app2.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$96.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/user.jpg" alt=""></div>
+                    <div>
+                        <strong>Mike Boss</strong>
+                        <span><i class="fa fa-map-marker"></i><em>New York, US</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/electronics.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$71.99</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/avatar.jpg" alt=""></div>
+                    <div>
+                        <strong>Emma Mil</strong>
+                        <span><i class="fa fa-map-marker"></i><em>Carlifonia, US</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app4.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$9996.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/avatar2.jpg" alt=""></div>
+                    <div>
+                        <strong>Carol Mitch</strong>
+                        <span><i class="fa fa-map-marker"></i><em>Wales, CA</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="sale-item">
+            <div class="sale-item-img">
+                <img src="img/items/app5.jpg" alt="">
+                <div class="sale-info">
+                    <strong>Item Name</strong>
+                    <span class="sale-price">$63.00</span>
+                </div>
+            </div>
+            <div class="sale-lister">
+                <div class="lister-pic">
+                    <div><img src="img/avatar.jpg" alt=""></div>
+                    <div>
+                        <strong>Viola Wat</strong>
+                        <span><i class="fa fa-map-marker"></i><em>Nairobi, KE</em></span>
+                    </div>
+                </div>
+                <a href="item-detail.html"><i class="fa fa-angle-right fa-2x"></i></a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!--end items wrapper-->
+
+<!--site pagination-->
+<div class="site-pagination">
+    <a href="#" id="pre"><i class="fa fa-angle-left"></i>&nbsp;<em>上一页</em></a>
+
+    <a href="#"><span><i>1</i></span></a>
+    <a href="#" class="current"><span><i>2</i></span></a>
+    <a href="#"><span><i>3</i></span></a>
+    <a href="#"><span><i>4</i></span></a>
+    <a href="#"><span><i>5</i></span></a>
+    <a href="#"><span><i>6</i></span></a>
+
+    <a href="#" id="next"><em>下一页</em>&nbsp;<i class="fa fa-angle-right"></i></a>
+</div>
+<!--end site pagination-->
+
+<!--start here-->
+<div class="start-here">
+    <h3>在这儿登陆</h3>
+    <p>
+        您未登录，无法进行下单等操作，请登陆尽快！
+    </p>
+    <div class="divide">
+        <a href="login-register.html" class="ui-btn ui-btn-info">登陆</a>
+        <strong class="ui-text-success">Or</strong>
+        <a href="login-register.html" class="ui-btn ui-btn-prim">注册</a>
+    </div>
+</div>
+<!--end start here-->
+
+<!--chat box-->
+<!--<a href="#" class="chat-box-btn"><i class="fa fa-comment icon-sw"></i></a>
+
+<div class="chat-box">
+    <div class="chat-top">
+        <section>
+            <h6 class="org-name">OldsMarket</h6>
+            <div class="repliers">
+                <div class="r-img">
+                    <img src="img/avatar2.jpg" alt="">
+                    <strong class="name">Megan</strong>
+                </div>
+                <div class="r-img">
+                    <img src="img/user2.jpg" alt="">
+                    <strong class="name">Brandon</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="chat-flow" id="chat-flow">
+        <p class="outbound">
+            Hallo, Anyone there?
+        </p>
+        <p class="inbound">
+            Hi, Vincent here. How may I be of service.
+        </p>
+    </div>
+    <form class="chat-form" action="#">
+        <input type="text" class="form-control chat-message" placeholder="Send a Message">
+    </form>
+</div>-->
+
+<!--end chat box-->
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="loader"><img src="img/logo.png" alt=""></div>
+</div>
+<!--end page loader-->
+
+<!--footer section-->
+<footer class="footer">
+    <div class="footer-item">
+        <strong>取得联系</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 支持</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 通知</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 社区论坛</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联盟伙伴</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联系我们</a>
+    </div>
+    <div class="footer-item">
+        <strong>疑问?</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 帮助</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联系</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 在线客服</a>
+    </div>
+    <div class="footer-item">
+        <strong>相关网站</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 脸谱网</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 微博</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 网络相册</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 视频网站</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 人际关系网</a>
+    </div>
+    <div class="footer-item">
+        <strong>资源连接</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 首页</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 产品</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 服务</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 关于我们</a>
+    </div>
+</footer>
+<div class="bottom-strip">
+    <div class="cards-accepted">
+        <em>Cards Accepted:</em>
+        <img src="img/card-logos.png" alt="">
+    </div>
+    <div class="copyright"><i class="fa fa-copyright"></i> <span>SchoolOldsMarket. 拥有相关所有权</span></div>
+    <div class="country"><!--<span>C.N</span><img src="img/USAFlag.png" alt="">--></div>
+</div>
+<!--end footer section-->
+
+<!--scripts-->
+<script src="vendor/js/jquery-3.2.1.min.js"></script>
+<script src="vendor/js/popper.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+<script src="vendor/js/alertify.js"></script>
+<script src="vendor/js/jquery.knob.min.js"></script>
+<!--[if IE]><script type="text/javascript" src="vendor/js/excanvas.js"></script><![endif]-->
+<script src="vendor/js/summernote-bs4.min.js"></script>
+<script src="vendor/js/dropzone.js"></script>
+<script src="vendor/OwlCarousel2-2.2.1/owl.carousel.min.js"></script>
+<script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="vendor/js/typed.js"></script>
+<script src="js/app.js"></script>
+<script type="text/javascript">
+    var resultItems = {};
+    var setIimes = function (resultItems,page) {
+        $.ajax({
+            url:"http://localhost:8080/ctp/goods/0",
+            type:"get",
+            data:{
+                page:page,
+                limit:8,
+                goodsName:$("#search").val(),
+                goodsStatus:2
+            },
+            success:function (result) {
+                resultItems = result;
+                var oneItem = result.data;
+                console.log(oneItem);
+                $(".items").empty();
+                $(".site-pagination").empty();
+                var itemssHtml = "";
+                /**
+                 * 拼接商品
+                 */
+                for(var i = 0 ;i<oneItem.length;i++){
+                    itemssHtml += "<div class='sale-item' goodsId='"+oneItem[i].id+"'>\n" +
+                        "            <div class='sale-item-img'>\n" +
+                        "                <img src='img/items/"+oneItem[i].image+"' alt='''>\n" +
+                        "                <div class='sale-info'>\n" +
+                        "                    <strong>"+oneItem[i].goodsName+"</strong>\n" +
+                        "                    <span class='sale-price'>$"+oneItem[i].goodsPrice+"</span>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "            <div class='sale-lister'>\n" +
+                        "                <div class='lister-pic'>\n" +
+                        "                    <div><img src='img/userimg/"+oneItem[i].user.headPortrait+"' alt='''></div>\n" +
+                        "                    <div>\n" +
+                        "                        <strong>"+oneItem[i].user.userName+"</strong>\n" +
+                        "                        <span><i class='fa fa-map-marker'></i><em>交易地点："+oneItem[i].tradingPlace+"</em></span>\n" +
+                        "                    </div>\n" +
+                        "                </div>\n" +
+                        "                <a href='javascript:void(0)' class='goodsDetail'><i class='fa fa-angle-right fa-2x'></i></a>\n" +
+                        "            </div>\n" +
+                        "           </div>"
+                }
+                $(".items").append(itemssHtml);
+                var pageHtml = "";
+                pageHtml += "<a href='javascript:void(0)' id='pre'><i class='fa fa-angle-left'></i>&nbsp;<em>上一页</em></a>";
+                /**
+                 * 拼接页码
+                 */
+                for(var i = 0;i<result.totalPage;i++){
+                    if(result.page==(i+1)){
+                        pageHtml += "<a href='javascript:void(0)' class='pageNumber current'><span><i>"+(i+1)+"</i></span></a>";
+                    }else{
+                        pageHtml += "<a href='javascript:void(0)' class='pageNumber'><span><i>"+(i+1)+"</i></span></a>";
+                    }
+                }
+                pageHtml += "<a href='javascript:void(0)' id='next'><i class='fa fa-angle-right'></i>&nbsp;<em>下一页</em></a>";
+                $(".site-pagination").append(pageHtml);
+                /**
+                 * 页码点击
+                 */
+                $(".pageNumber").on("click",function () {
+                    setIimes(result,$(this).text());
+                });
+                /**
+                 * 上一页点击
+                 */
+                $("#pre").click(function () {
+                    if(result.page ==1){
+                        setIimes(result,result.page);
+                    }else{
+                        setIimes(result,result.page-1);
+                    }
+                });
+                /**
+                 * 下一页点击
+                 */
+                $("#next").click(function () {
+                    if(result.page ==result.totalPage){
+                        setIimes(result,result.totalPage);
+                    }else{
+                        setIimes(result,result.page+1);
+                    }
+                });
+                /**
+                 * 商品详情
+                 */
+                $(".goodsDetail").click(function () {
+                    var goodsId = $(this).parent().parent().attr("goodsId");
+                    sessionStorage.setItem("goodsId",goodsId);
+                    window.location.href = "item-detail.html";
+                });
+            },
+            error:function () {
+                var html = "";
+                html += "<div class='sale-item'>“暂无商品”</div>";
+                console.log("请求失败！");
+                $(".items").append(html);
+            }
+        });
+    };
+
+    setIimes(resultItems,1);
+
+    $("#searchBtn").on("click",function () {
+        setIimes(resultItems,1);
+    });
+
+    /**
+     * 登陆人的用户信息显示
+     * @type {string | null}
+     */
+    var checkLogin = sessionStorage.getItem("userInfo");
+    if(checkLogin == null){
+        console.log("login信息为空");
+        $(".site-top-nav .site-menu > li:last-child").empty();
+        $(".start-here").empty();
+        var html = "";
+        var loginHtml = "";
+        html += "<a href='login-register.html' class='ui-btn ui-btn-info'>登陆 / 注册</a>";
+        loginHtml +="<div id='notLogin'>\n" +
+            "        <h3>在这儿登陆</h3>\n" +
+            "        <p>\n" +
+            "            您未登录，无法进行下单等操作，请登陆尽快！\n" +
+            "        </p>\n" +
+            "        <div class='divide'>\n" +
+            "            <a href='login-register.html' class='ui-btn ui-btn-info'>登陆</a>\n" +
+            "            <strong class='ui-text-success'>Or</strong>\n" +
+            "            <a href='login-register.html' class='ui-btn ui-btn-prim'>注册</a>\n" +
+            "        </div>\n" +
+            "\n" +
+            "    </div>";
+
+        $(".site-top-nav .site-menu > li:last-child").append(html);
+        $(".start-here").append(loginHtml);
+
+    }else{
+        console.log(checkLogin);
+        var userInfo = JSON.parse(checkLogin);
+        $(".site-top-nav .site-menu > li:last-child").empty();
+        $(".start-here").empty();
+        var html = "";
+        var loginHtml = "";
+        html += "<div class='site-user'>\n" +
+            "                    <div class='site-user-img'>\n" +
+            "                        <img src='img/userimg/"+userInfo.headPortrait+"' alt=''>\n" +
+            "                        <span class='online'></span>\n" +
+            "                    </div>\n" +
+            "                    <a href='dash-profile.html' class='user-name'><strong>"+userInfo.userName+"</strong></a>\n" +
+            "                </div>";
+
+        loginHtml += "<div id='logined'>\n" +
+            "        <h3>已登陆</h3>\n" +
+            "        <p>\n" +
+            "            您的账号已经登录，可以进行下单等操作，祝您购物愉快！\n" +
+            "        </p>\n" +
+            "    </div>";
+        $(".site-top-nav .site-menu > li:last-child").append(html);
+        $(".start-here").append(loginHtml);
+    }
+
+</script>
+<!--end scripts-->
+
+</body>
+</html>

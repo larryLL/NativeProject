@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--meta tags-->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Services Listing HTML5 CSS3 template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, services, listing">
+    <meta name="author" content="Ui-DesignLab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--end meta tags-->
+
+    <title>OldsMarket Dashboard</title>
+
+    <!--stylesheets-->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/animate.min.css">
+    <link rel="stylesheet" href="vendor/css/alertify.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!--end stylesheets-->
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo%7CNosifer%7CPoppins%7CQuicksand:700%7CRaleway%7CTangerine%7CHind+Vadodara" rel="stylesheet">
+    <!--end google fonts-->
+    <style>
+        #user-photo{
+            width: 100%;
+            height: 100%;
+        }
+        .dash-side-nav-wrapper .dash-side-nav .user-info .dash-user-img img{
+            width: 56px;
+            height: 56px;
+        }
+    </style>
+</head>
+<body class="dashboard">
+     
+
+
+
+<!--top navigation-->
+<div class="top-nav">
+    <i class="fa fa-bars toggle-dash-menu"></i>
+    <ul class="list-inline">
+        <!--<li class="list-inline-item"><a href="#" class="show-search"><i class="fa fa-search"></i></a></li>-->
+        <li class="list-inline-item"><a href="cart.html"><i class="fa fa-cart-arrow-down"></i><!--<span><em>4</em></span>--></a></li>
+        <li class="list-inline-item"><a href="dashboard.html"><i class="fa fa-bell"></i><!--<span><em>8</em></span>--></a></li>
+        <li class="list-inline-item"><a href="dash-profile.html"><i class="fa fa-user"></i></a></li>
+    </ul>
+</div>
+<!--end top navigation-->
+
+<!--side navigation-->
+<div class="dash-side-nav-wrapper" id="dash-side-menu">
+    <div class="dash-side-nav perfect-scroll">
+        <div class="dash-logo">
+            <h5><a href="dashboard.html">SOM二手市场</a></h5>
+            <span>个人面板</span>
+        </div>
+        <div class="user-info">
+            <div class="dash-user-img"><img src="img/user2.jpg" alt=""></div>
+            <div class="dash-user-info">
+                <strong>Murethi Brian  N.</strong>
+                <br>
+                <span>Backend Developer</span>
+            </div>
+            <a href="dash-profile.html" class="dash-edit-user"><i class="fa fa-pencil"></i></a>
+        </div>
+        <ul class="list-unstyled dash-menu">
+            <li><a href="dash-profile.html" class="current"><i class="fa fa-user"></i><span>个人信息</span></a></li>
+            <li><a href="dash-sales.html"><i class="fa fa-money"></i><span>交易记录</span></a></li>
+            <li><a href="dash-items.html"><i class="fa fa-list-alt"></i><span>商品列表</span></a></li>
+            <li><a href="dash-addItem.html"><i class="fa fa-plus-circle"></i><span>新增商品</span></a></li>
+            <li><a href="index.html"><i class="fa fa-sign-out"></i><span>返回市场</span></a></li>
+            <li><a href="#" id="logOut"><i class="fa fa-sign-out"></i><span>退出登陆</span></a></li>
+        </ul>
+    </div>
+</div>
+<!--end side navigation-->
+
+<!--search box-->
+<div class="dash-search-box" id="dash-search-box">
+    <div class="d-search-box">
+        <form action="#" method="post">
+            <div class="form-group">
+                <input required list="ui-list" class="form-control" type="search" placeholder="Search">
+            </div>
+            <button class="btn"><i class="fa fa-search"></i></button>
+        </form>
+        <datalist id="ui-list">
+            <option>Monthly sales</option>
+            <option>Salaries</option>
+            <option>Invoice</option>
+            <option>Messages</option>
+            <option>Reviews</option>
+            <option>Active items</option>
+        </datalist>
+    </div>
+</div>
+<!--end search box-->
+
+<!--ux-box-->
+<div id="ux-box" class="ux-box-wrapper">
+    <div class="ux-box">
+        <strong>更改密码</strong>
+        <form action="#" method="post" onsubmit="return changePwd(this)">
+            <div class="form-group">
+                <label for="newPwd">新密码</label>
+                <input required name="loginPwd" id="newPwd" type="password" class="form-control" placeholder="请输入您的新密码">
+            </div>
+            <div class="form-group">
+                <label for="checkPwd">确认密码</label>
+                <input required name="checkPwd" id="checkPwd" type="password" class="form-control" placeholder="请再次输入您的新密码">
+            </div>
+            <div>
+                <a href="#" class="ui-btn ui-btn-danger close-box">取消</a>
+                <button type="submit" class="ui-btn ui-btn-info">保存密码</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--end ux-box-->
+
+<!--content container-->
+<div class="content-wrapper">
+
+<!--userimg profile-->
+    <form action="#" method="post" id="userInfoForm" enctype="multipart/form-data" class="profile-wrapper" onsubmit="return saveInfo(this)">
+        <div class="primary-info">
+            <div class="user-pic">
+                <div class="pic">
+                    <div class="pic-img"><img id="user-photo" alt=""></div>
+                    <label title="Choose Image" for="file"><input type="file" id="file" name="file" class="img-file"><i class="fa fa-camera"></i></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <label for="loginName">登陆账号</label>
+                        <input class="form-control" type="text" name="loginName" id="loginName" required="required" readonly placeholder="1213811">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <div class="change-psd show-box">
+                    <span class="pswd">修改密码</span>
+                    <input class="form-control" disabled type="password" id="password" value="Zentom123565545">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <label for="address">地址</label>
+                        <input class="form-control" type="text" required name="address" id="address" placeholder="请输入地址">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input class="form-control" type="email" required name="email" id="email" placeholder="you@example.com">
+            </div>
+            <!--<div class="form-group">
+                <label for="phone">联系电话</label>
+                <input class="form-control" type="tel" id="phone" placeholder="+1 686 398689 55">
+            </div>
+            <div class="form-group">
+                <label for="adr">地址</label>
+                <input class="form-control" type="text" id="adr" value="91 - 10100 Miami">
+            </div>-->
+        </div>
+        <div class="secondary-info">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="userName">用户名</label>
+                        <input class="form-control" type="text" name="userName" required id="userName" placeholder="请输入你账号的用户名">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="gender">性别</label>
+                        <select name="gender" id="gender" required class="form-control" title="">
+                            <option value="0">女</option>
+                            <option value="1">男</option>
+                            <option value="2">保密</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="realName">真实姓名</label>
+                        <input class="form-control" type="text" name="realName" required id="realName" placeholder="请输入您得真实姓名">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="telephone">联系电话</label>
+                        <input class="form-control" type="tel" name="telephone" id="telephone" required placeholder="+1 686 398689 55">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="identity">身份证号</label>
+                        <input class="form-control" type="text" name="identity" id="identity" required placeholder="请输入身份证号">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="bayNumber">支付宝账号</label>
+                        <input class="form-control" type="text" name="bayNumber" id="bayNumber" required placeholder="请输入您的支付宝账号">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="msg">我的介绍</label>
+                <textarea name="myIntroduction" id="msg" rows="5" required class="form-control" placeholder="让别人了解你，请输入您的介绍..."></textarea>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-8 col-md-6"></div>
+                <div class="col-lg-4 col-md-6">
+                    <button type="submit" class="ui-btn ui-btn-info" >保存 <i class="fa fa-save"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+<!--end userimg profile-->
+
+</div>
+<!--end content container-->
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="loader"><img src="img/logo.png" alt=""></div>
+</div>
+<!--end page loader-->
+
+<!--scripts-->
+<script src="vendor/js/jquery-3.2.1.min.js"></script>
+<script src="vendor/js/popper.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+<script src="vendor/js/alertify.js"></script>
+<script src="vendor/js/jquery.knob.min.js"></script>
+<!--[if IE]><script type="text/javascript" src="vendor/js/excanvas.js"></script><![endif]-->
+<script src="vendor/js/summernote-bs4.min.js"></script>
+<script src="vendor/js/dropzone.js"></script>
+<script src="vendor/OwlCarousel2-2.2.1/owl.carousel.min.js"></script>
+<script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="vendor/js/typed.js"></script>
+<script src="js/app.js"></script>
+<!--end scripts-->
+<script>
+    /**
+     * 登陆验证
+     */
+    var checkLogin = sessionStorage.getItem("userInfo");
+    if(checkLogin == null){
+        alert("未登录，请先登陆！");
+        window.location.href="login-register.html";
+    }else{
+        /**
+         * 初始化表单
+         * @type {any}
+         */
+        var userInfo = JSON.parse(checkLogin);
+        $(".dash-user-img").find("img").attr("src","img/userimg/"+userInfo.headPortrait);
+        $(".dash-user-info").find("strong").text("用户名："+userInfo.userName);
+        $(".dash-user-info").find("span").text("真实姓名："+userInfo.realName);
+
+        $("#password").val(userInfo.loginPwd);
+        $("#loginName").val(userInfo.loginName);
+        $("#userName").val(userInfo.userName);
+        $("#realName").val(userInfo.realName);
+        console.log(userInfo.gender);
+        $("#gender").val(userInfo.gender);
+        $("#user-photo").attr("src","img/userimg/"+userInfo.headPortrait);
+        $("#email").val(userInfo.email);
+        $("#telephone").val(userInfo.telephone);
+        $("#address").val(userInfo.address);
+        $("#identity").val(userInfo.identity);
+        $("#bayNumber").val(userInfo.bayNumber);
+        $("#msg").val(userInfo.myIntroduction);
+
+        /**
+         * 信息保存按钮
+         * @param form
+         * @returns {boolean}
+         */
+        var saveInfo = function (form) {
+            var pattern = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;  //身份证号验证
+            var phone = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;  //手机号验证
+
+            // var identity = $("#identity").val();
+            if(!phone.test(form.telephone.value)){
+                alert("请输入正确的手机号！");
+                $("#telephone").focus();
+                return false;
+            }
+            else if(!pattern.test(form.identity.value)){
+                alert("请输入正确的身份证号！");
+                $("#identity").focus();
+                return false;
+            }
+
+            console.log(form);
+            var formData = new FormData($("#userInfoForm")[0]);
+            console.log(formData);
+            $.ajax({
+                url:"http://localhost:8080/ctp/user/"+userInfo.id,
+                type:"post",
+                contentType:false,
+                cache:false,
+                processData:false,
+                data:formData,
+                success:function (result) {
+                    console.log(result);
+                    if(result.statuCode == 1){
+                        alertify.success("修改成功！2秒后刷新页面！");
+                        sessionStorage.setItem("userInfo",JSON.stringify(result.obj));
+                        setTimeout (function (args) { window.location.reload(); }, 2000);
+                    }
+                },
+                error:function (result) {
+                    console.log("保存请求出错！");
+                }
+            });
+
+            return false;
+        };
+
+        /**
+         * 修改密码
+         * @param form
+         * @returns {boolean}
+         */
+        var changePwd = function (form) {
+            console.log("修改密码:"+userInfo.id+":"+form.loginPwd.value);
+
+            if(form.loginPwd.value != form.checkPwd.value){
+                alert("确认密码与新密码一致！");
+                $("#checkPwd").focus();
+            }else{
+                $.ajax({
+                    url:"http://localhost:8080/ctp/user/"+userInfo.id,
+                    type:"put",
+                    data:{loginPwd:form.loginPwd.value},
+                    success:function (result) {
+                        console.log(result);
+                        if(result.statuCode == 1){
+                            alertify.success("修改成功！");
+                            $('.ux-box-wrapper').removeClass('show-ux-box');
+                            $("#password").val(form.loginPwd.value);
+                            userInfo.loginPwd = form.loginPwd.value;
+                            sessionStorage.setItem("userInfo",JSON.stringify(userInfo));
+                        }else{
+                            alertify.error("系统繁忙，请稍后重试！")
+                        }
+
+                    },
+                    error:function (result) {
+                        alert("修改密码请求出错，请联系管理员！");
+                    }
+                });
+            }
+            return false;
+        };
+
+    }
+</script>
+</body>
+</html>

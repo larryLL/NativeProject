@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--meta tags-->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Services Listing HTML5 CSS3 template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, services, listing">
+    <meta name="author" content="Ui-DesignLab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--end meta tags-->
+
+    <title>OldsMarket Dashboard</title>
+
+    <!--stylesheets-->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/animate.min.css">
+    <link rel="stylesheet" href="vendor/css/alertify.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/fileinput.css">
+    <!--end stylesheets-->
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo%7CNosifer%7CPoppins%7CQuicksand:700%7CRaleway%7CTangerine%7CHind+Vadodara" rel="stylesheet">
+    <!--<script type="text/javascript" src="js/fileinput.js" ></script>-->
+    <!--<script type="text/javascript" src="js/locales/zh.js"></script>-->
+    <link rel="stylesheet" href="css/bootstrap-fileinput.css">
+
+    <!--end google fonts-->
+    <style>
+        .dash-side-nav-wrapper .dash-side-nav .user-info .dash-user-img img{
+            width: 56px;
+            height: 56px;
+        }
+    </style>
+</head>
+<body class="dashboard">
+
+<!--top navigation-->
+<div class="top-nav">
+    <i class="fa fa-bars toggle-dash-menu"></i>
+    <ul class="list-inline">
+        <!--<li class="list-inline-item"><a href="#" class="show-search"><i class="fa fa-search"></i></a></li>-->
+        <li class="list-inline-item"><a href="cart.html"><i class="fa fa-cart-arrow-down"></i><!--<span><em>4</em></span>--></a></li>
+        <li class="list-inline-item"><a href="dashboard.html"><i class="fa fa-bell"></i><!--<span><em>8</em></span>--></a></li>
+        <li class="list-inline-item"><a href="dash-profile.html"><i class="fa fa-user"></i></a></li>
+    </ul>
+</div>
+<!--end top navigation-->
+
+<!--side navigation-->
+<div class="dash-side-nav-wrapper" id="dash-side-menu">
+    <div class="dash-side-nav perfect-scroll">
+        <div class="dash-logo">
+            <h5><a href="dashboard.html">SOM二手市场</a></h5>
+            <span>个人面板</span>
+        </div>
+        <div class="user-info">
+            <div class="dash-user-img"><img src="img/user2.jpg" alt=""></div>
+            <div class="dash-user-info">
+                <strong>Murethi Brian  N.</strong>
+                <br>
+                <span>Backend Developer</span>
+            </div>
+            <a href="dash-profile.html" class="dash-edit-user"><i class="fa fa-pencil"></i></a>
+        </div>
+        <ul class="list-unstyled dash-menu">
+            <li><a href="dash-profile.html"><i class="fa fa-user"></i><span>个人信息</span></a></li>
+            <li><a href="dash-sales.html"><i class="fa fa-money"></i><span>交易记录</span></a></li>
+            <li><a href="dash-items.html"><i class="fa fa-list-alt"></i><span>商品列表</span></a></li>
+            <li><a href="dash-addItem.html" class="current"><i class="fa fa-plus-circle"></i><span>新增商品</span></a></li>
+            <li><a href="index.html"><i class="fa fa-sign-out"></i><span>返回市场</span></a></li>
+            <li><a href="#" id="logOut"><i class="fa fa-sign-out"></i><span>退出登陆</span></a></li>
+        </ul>
+    </div>
+</div>
+<!--end side navigation-->
+
+<!--search box-->
+<div class="dash-search-box" id="dash-search-box">
+    <div class="d-search-box">
+        <form action="#" method="post">
+            <div class="form-group">
+                <input required list="ui-list" class="form-control" type="search" placeholder="Search">
+            </div>
+            <button class="btn"><i class="fa fa-search"></i></button>
+        </form>
+        <datalist id="ui-list">
+            <option>Monthly sales</option>
+            <option>Salaries</option>
+            <option>Invoice</option>
+            <option>Messages</option>
+            <option>Reviews</option>
+            <option>Active items</option>
+        </datalist>
+    </div>
+</div>
+<!--end search box-->
+
+<!--content container-->
+<div class="content-wrapper">
+
+    <!--userimg profile-->
+    <form action="#" method="post" id="goodForm" class="profile-wrapper" enctype="multipart/form-data">
+        <div class="primary-info">
+            <!--<div class="userimg-pic">
+                <div class="pic">
+                    <div class="pic-img"><img id="userimg-photo" src="img/male_default.jpg" alt=""></div>
+                    <label title="Choose Image" for="file"><input type="file" id="file" name="img-file" class="img-file"><i class="fa fa-camera"></i></label>
+                </div>
+            </div>-->
+            <!--<div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <label for="itemImg">商品图片</label>
+                        <input class="form-file" type="file" id="itemImg" placeholder="请输入商品名称...">
+                    </div>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="uploadImage">商品图片</label>
+                <div class="col-md-8">
+                    <div class="fileinput fileinput-new" data-provides="fileinput" id="uploadImageDiv">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                            <img src="img/items/default.jpg" alt="" />
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                        <div>
+                            <span class="btn default btn-file">
+                            <span class="fileinput-new btn btn-primary">选择图片</span>
+                            <span class="fileinput-exists btn btn-primary">更改</span>
+                            <input type="file" required name="uploadImage" id="uploadImage" multiple /></span>
+                            <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">移除</a>
+                            <span style="font-size: 12px">请选择1M以内图片</span>
+                        </div>
+                    </div>
+                    <div id="titleImageError" style="color: #a94442"></div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="form-group">
+                <label for="msg">商品描述</label>
+                <textarea name="msg" required id="msg" rows="5" class="form-control" placeholder="请输入商品的介绍和描述..."></textarea>
+            </div>
+
+        </div>
+        <div class="secondary-info">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <label for="fname">商品名称</label>
+                        <input class="form-control" required type="text" id="fname" placeholder="请输入商品名称...">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <!--<label for="fname">商品名称</label>
+                        <input class="form-control" type="text" id="fname" placeholder="请输入商品名称...">-->
+                        <label for="itemType">商品类型</label>
+                        <select name="goodsTypeId" id="itemType" required class="form-control" title="">
+                            <option value="all">All records</option>
+                            <option value="date1">Date Listed</option>
+                            <option value="date2">Date Sold</option>
+                            <option value="price">Price</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="goodsPrice">商品二手价</label>
+                        <input class="form-control" required type="text" name="goodsPrice" id="goodsPrice" placeholder="请输入本商品二手出售价格">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="goodsOriginalPrice">原价</label>
+                        <input class="form-control" required type="text" name="goodsOriginalPrice" id="goodsOriginalPrice" placeholder="请输入本商品的原价">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="goodsdegree">新旧程度</label>
+                        <input class="form-control" required name="goodsDegree" type="number" min="0" max="1" step="0.1" id="goodsDegree" placeholder="请输入本商品的新旧程度（0~1）">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label for="goodsQuantity">总量</label>
+                        <input class="form-control" required type="number" min="0" name="goodsQuantity" id="goodsQuantity" placeholder="请输入本商品的数量">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <label for="tradingPlace">商品交易地点</label>
+                <textarea name="tradingPlace" required id="tradingPlace" rows="5" class="form-control" placeholder="请输入商品的交易地点..."></textarea>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6"></div>
+                <div class="col-lg-6 col-md-6">
+                    <button type="button" id="pushGoods" class="ui-btn ui-btn-info">申请发布商品 <i class="fa fa-save"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--end userimg profile-->
+
+</div>
+<!--end content container-->
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="loader"><img src="img/logo.png" alt=""></div>
+</div>
+<!--end page loader-->
+
+<!--scripts-->
+<script src="vendor/js/jquery-3.2.1.min.js"></script>
+<script src="layer/layer.js"></script>
+<script src="vendor/js/popper.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-fileinput.js"></script>
+<script src="vendor/js/alertify.js"></script>
+<script src="vendor/js/jquery.knob.min.js"></script>
+<!--[if IE]><script type="text/javascript" src="vendor/js/excanvas.js"></script><![endif]-->
+<script src="vendor/js/summernote-bs4.min.js"></script>
+<script src="vendor/js/dropzone.js"></script>
+<script src="vendor/OwlCarousel2-2.2.1/owl.carousel.min.js"></script>
+<script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="vendor/js/typed.js"></script>
+<script src="js/app.js"></script>
+<!--end scripts-->
+<script>
+
+    /**
+     * 登陆验证
+     */
+    var checkLogin = sessionStorage.getItem("userInfo");
+        if(checkLogin == null || checkLogin == "undefined"){
+        $("body").empty();
+        var html = "<center><h3 style='margin-top: 40px'>您未登录，请先登录！</h3></center>";
+        $("body").append(html);
+        alert("未登录，请先登陆！");
+        window.location.href="login-register.html";
+    }else{
+        var userInfo = JSON.parse(checkLogin);
+        $(".dash-user-img").find("img").attr("src","img/userimg/"+userInfo.headPortrait);
+        $(".dash-user-info").find("strong").text("用户名："+userInfo.userName);
+        $(".dash-user-info").find("span").text("真实姓名："+userInfo.realName);
+    }
+
+    /**
+     * 商品类型列表
+     */
+    $.ajax({
+        url:"http://localhost:8080/ctp/goods/type/0",
+        type:"get",
+        data:{},
+        success:function (result) {
+            var typeData = result.rows;
+            console.log(result);
+            $("#itemType").empty();
+            var htmlItemType = "";
+            for(var i = 0;i<typeData.length; i++){
+                htmlItemType += "<option value='"+typeData[i].id+"'>"+typeData[i].typeName+"</option>";
+            }
+            $("#itemType").append(htmlItemType);
+        },
+        error:function () {
+            alert("请求出错！");
+        }
+    });
+
+
+
+
+    $("#pushGoods").on("click",function () {
+
+        var file = $("#uploadImage")[0].files[0];
+        console.log(file);
+        var msg = $("#msg").val();
+        var fname = $("#fname").val();
+        var itemType = $("#itemType").val();
+        var goodsPrice = $("#goodsPrice").val();
+        var goodsOriginalPrice = $("#goodsOriginalPrice").val();
+        var goodsDegree = $("#goodsDegree").val();
+        var goodsQuantity = $("#goodsQuantity").val();
+        var tradingPlace = $("#tradingPlace").val();
+
+        var checkLogin = sessionStorage.getItem("userInfo");
+        // var userId = sessionStorage.getItem()
+        if(checkLogin == null){
+            alert("未登陆！请先登陆！");
+        }else if(file == null || file == ''){
+            alert("请选择图片！");
+        }else if(msg == ''){
+            alert("商品详情不能为空！");
+            $("#msg").focus();
+        }else if(fname ==""){
+            alert("商品名称不能为空！");
+            $("#fname").focus()
+        }else if(itemType == ""){
+            alert("商品类型不能为空！");
+            $("#itemType").focus();
+        }else if(goodsPrice == ''){
+            alert("商品二手价不能为空！");
+            $("#goodsPrice").focus();
+        }else if(goodsOriginalPrice == ''){
+            alert("商品原价不能为空！");
+            $("#goodsOriginalPrice").focus();
+        }else if(goodsDegree == '' || goodsDegree > 1 || goodsDegree < 0){
+            if(goodsDegree > 1 || goodsDegree < 0){
+                alert("商品新旧程度输入有误！");
+                $("#goodsDegree").focus();
+            }else {
+                alert("商品新旧程度不能为空！");
+                $("#goodsDegree").focus()
+            }
+        }else if(goodsQuantity == ''){
+            alert("商品总量不能为空！");
+            $("#goodsQuantity").focus();
+        }else if(tradingPlace == ''){
+            alert("请输入商品交易地点！");
+            $("#tradingPlace").focus();
+        }else{
+            var userInfo = JSON.parse(checkLogin);
+            if(null == userInfo.identity || "" == userInfo.identity){
+                alertify.error("个人信息未完善，无法申请商品发布！请完善个人信息！");
+            }else{
+                var formData = new FormData();
+                formData.append("file",file);
+                formData.append("goodsName",fname);
+                formData.append("goodsTypeId",itemType);
+                formData.append("goodsDetail",msg);
+                formData.append("goodsDegree",goodsDegree);
+                formData.append("goodsOriginalPrice",goodsOriginalPrice);
+                formData.append("goodsPrice",goodsPrice);
+                formData.append("goodsQuantity",goodsQuantity);
+                formData.append("tradingPlace",tradingPlace);
+                formData.append("userId",userInfo.id);
+                console.log(formData);
+                $.ajax({
+                    url:"http://localhost:8080/ctp/goods/6",
+                    type:"POST",
+                    data:formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function (result) {
+                        console.log(result);
+                        if(result.statuCode == 1){
+                            layer.msg("申请成功！请等待审核。",{icon:1,time:2000});
+                        }else if(result.statuCode == 2){
+                            layer.msg("已有该商品名称，请重新输入商品名称！",{icon:3,time:2000});
+                        }else if(result.statuCode == 10){
+                            layer.msg("文件错误！",{icon:5,time:2000});
+                        }else {
+                            layer.msg("系统繁忙！",{icon:5,time:2000});
+                        }
+                    },
+                    error:function () {
+                        alert("发布请求出错！请稍后重试！")
+                    }
+                })
+            }
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

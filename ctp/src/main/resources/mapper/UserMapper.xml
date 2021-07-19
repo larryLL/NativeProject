@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd,">
+<mapper namespace="com.shool.ctp.usermag.mapper.UserMapper">
+	<!-- 结果集的一行数据映射到DoctorBean类中 -->
+	<resultMap type="UserBean" id="userMap">
+		<id property="id" column="id" javaType="java.lang.Long"/>
+		<result property="userName" column="user_name" javaType="string"/>
+		<result property="loginName" column="login_name" javaType="string"/>
+		<result property="headPortrait" column="head_portrait" javaType="string"/>
+		<result property="loginPwd" column="login_pwd" javaType="string"/>
+		<result property="realName" column="real_name" javaType="string"/>
+		<result property="gender" column="gender" javaType="int"/>
+		<result property="email" column="email" javaType="string"/>
+		<result property="address" column="address" javaType="string"/>
+		<result property="telephone" column="telephone" javaType="string"/>
+		<result property="myIntroduction" column="my_introduction" javaType="string"/>
+		<result property="loginTime" column="login_time" javaType="java.util.Date"/>
+		<result property="createTime" column="create_time" javaType="java.util.Date"/>
+		<result property="updateTime" column="update_time" javaType="java.util.Date"/>
+		<result property="deleteFlag" column="delete_flag" javaType="int"/>
+		<result property="userStatus" column="user_status" javaType="int"/>
+		<result property="bayNumber" column="bay_number" javaType="string"/>
+		<result property="identity" column="identity" javaType="string"/>
+		<!-- <association property="user" column="fk_user_id" javaType="java.lang.Long" fetchType="lazy" select="getPatientByDoctorId"></collection> -->
+		<association property="role" column="fk_role_id" javaType="RoleBean" fetchType="lazy" select="getUserRoleByRoleId"></association>
+		<!-- <collection property="goods" column="id" javaType="java.util.List" fetchType="lazy" select="com.shool.ctp.goodsmag.mapper.GoodsMapper.getGoodsByUserId"></collection> -->
+		
+	</resultMap>
+	
+	<select id="getUserRoleByRoleId" resultType="RoleBean">
+		select id,role_name as roleName,role_detail as roleDetail from t_role where id = #{id}
+	</select>
+	
+	<select id="getUserById" parameterType="int" resultMap="userMap">
+		select * from t_user where id=#{id}
+	</select>
+	
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="user.id" >
+		insert into t_user(
+		<trim suffixOverrides=",">
+			<if test="user.userName != null and user.userName != '' ">
+				user_name,
+			</if>
+			<if test="user.loginName != null and user.loginName != '' ">
+				login_name,
+			</if>
+			<if test="user.headPortrait != null and user.headPortrait != '' ">
+				user_headPortrait,
+			</if>
+			<if test="user.loginPwd != null ">
+				login_pwd,
+			</if>
+			<if test="user.realName != null ">
+				real_name,
+			</if>
+			<if test="user.gender != null ">
+				gender,
+			</if>
+			<if test="user.email != null ">
+				email,
+			</if>
+			<if test="user.address != null ">
+				address,
+			</if>
+			<if test="user.telephone != null ">
+				telephone,
+			</if>
+			<if test="user.myIntroduction != null ">
+				my_introduction,
+			</if>
+			<if test="user.createTime != null ">
+				create_time,
+			</if>
+			<if test="user.updateTime != null ">
+				update_time,
+			</if>
+			delete_flag
+		</trim>
+			 
+		) value(
+		<trim suffixOverrides=",">
+			<if test="user.userName != null and user.userName != '' ">
+				#{user.userName},
+			</if>
+			<if test="user.loginName != null and user.loginName != '' ">
+				#{user.loginName},
+			</if>
+			<if test="user.headPortrait != null and user.headPortrait != '' ">
+				#{user.headPortrait},
+			</if>
+			<if test="user.loginPwd != null ">
+				#{user.loginPwd},
+			</if>
+			<if test="user.realName != null ">
+				#{user.realName},
+			</if>
+			<if test="user.gender != null ">
+				#{user.gender},
+			</if>
+			<if test="user.email != null ">
+				#{user.email},
+			</if>
+			<if test="user.address != null ">
+				#{user.address},
+			</if>
+			<if test="user.telephone != null ">
+				#{user.telephone},
+			</if>
+			<if test="user.myIntroduction != null ">
+				#{user.myIntroduction},
+			</if>
+			<if test="user.createTime != null ">
+				#{user.createTime},
+			</if>
+			<if test="user.updateTime != null ">
+				#{user.updateTime},
+			</if>
+			0
+		</trim>
+		)
+	</insert>
+	<!-- 修改用户信息 -->
+	<update id="updateUser">
+	update t_user 
+	<set>
+		<if test="user.userName != null and user.userName != '' ">
+				user_name=#{user.userName},
+			</if>
+			<if test="user.loginName != null and user.loginName != '' ">
+				login_name=#{user.loginName},
+			</if>
+			<if test="user.headPortrait != null and user.headPortrait != '' ">
+				user_headPortrait=#{user.headPortrait},
+			</if>
+			<if test="user.loginPwd != null ">
+				login_pwd=#{user.loginPwd},
+			</if>
+			<if test="user.realName != null ">
+				real_name=#{user.realName},
+			</if>
+			<if test="user.gender != null ">
+				gender=#{user.gender},
+			</if>
+			<if test="user.email != null ">
+				email=#{user.email},
+			</if>
+			<if test="user.address != null ">
+				address=#{user.address},
+			</if>
+			<if test="user.telephone != null ">
+				telephone=#{user.telephone},
+			</if>
+			<if test="user.myIntroduction != null ">
+				my_introduction=#{user.myIntroduction},
+			</if>
+			<if test="user.loginTime != null ">
+				login_time = now(),
+			</if>
+			<if test="user.updateTime != null ">
+				update_time=#{user.updateTime},
+			</if>
+	</set>
+	</update>
+	
+	<!-- 删除商品信息 -->
+	<update id="deleteUser" >
+		update t_user set delete_flag = 1 where id = #{id}
+	</update>
+	
+	<!-- 条件查询商品的数量 -->
+	<select id="countUserPage" resultType="int">
+		select count(*) from t_user 
+		<where>
+			<if test="user.userName != null and user.userName != '' ">
+				and user_name like concat(#{user.userName},'%') 
+			</if>
+			<if test="user.loginPwd != null ">
+				and login_pwd = #{user.loginPwd}
+			</if>
+			<if test="user.gender != null ">
+				and gender = #{user.gender}
+			</if>
+			<if test="user.email != null ">
+				and email = #{user.email}
+			</if>
+			<if test="user.address != null ">
+				and address = #{user.address}
+			</if>
+			<if test="user.telephone != null ">
+				and telephone = #{user.telephone}
+			</if>
+			and delete_flag = 0
+		</where>
+	</select>
+	
+	<select id="findUserPage" resultMap="userMap">
+		select * from t_user 
+		<where>
+			<if test="user.userName != null and user.userName != '' ">
+				and user_name like concat(#{user.userName},'%') 
+			</if>
+			<if test="user.loginPwd != null ">
+				and login_pwd = #{user.loginPwd}
+			</if>
+			<if test="user.gender != null ">
+				and gender = #{user.gender}
+			</if>
+			<if test="user.email != null ">
+				and email = #{user.email}
+			</if>
+			<if test="user.address != null ">
+				and address = #{user.address}
+			</if>
+			<if test="user.telephone != null ">
+				and telephone = #{user.telephone}
+			</if>
+			and delete_flag = 0
+		</where>
+		order by create_time desc
+		limit #{page.index},#{page.rows}
+	</select>
+	
+	<select id="checkManageLoginByUser" resultMap="userMap">
+		select * from t_user 
+		<where>
+			<if test="user.userName != null and user.userName != '' ">
+				and user_name = #{user.userName} 
+			</if>
+			<if test="user.loginName != null and user.loginName != '' ">
+				and login_name = #{user.loginName} 
+			</if>
+			<if test="user.loginPwd != null ">
+				and login_pwd = #{user.loginPwd}
+			</if>
+			<if test="user.gender != null ">
+				and gender = #{user.gender}
+			</if>
+			<if test="user.email != null ">
+				and email = #{user.email}
+			</if>
+			<if test="user.address != null ">
+				and address = #{user.address}
+			</if>
+			<if test="user.telephone != null ">
+				and telephone = #{user.telephone}
+			</if>
+			and delete_flag = 0
+		</where>
+	</select>
+	
+</mapper>

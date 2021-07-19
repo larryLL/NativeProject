@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ctp">
+    <output-path>$PROJECT_DIR$/out/artifacts/ctp</output-path>
+    <root id="archive" name="ctp.war">
+      <element id="artifact" artifact-name="ctp:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,500 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--meta tags-->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Services Listing HTML5 CSS3 template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, services, listing">
+    <meta name="author" content="Ui-DesignLab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--end meta tags-->
+
+    <title>OldsSchoolMarket 账号</title>
+    <!--stylesheets-->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/animate.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!--end stylesheets-->
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo%7CNosifer%7CPoppins%7CQuicksand:700%7CRaleway%7CTangerine%7CHind+Vadodara" rel="stylesheet">
+    <!--end google fonts-->
+    <style>
+        .site-user-img img{
+            width: 34px;
+            height: 34px;
+        }
+
+    </style>
+</head>
+<body>
+
+     
+
+
+<!--navigation bars-->
+
+<div class="sit-bg">
+    <nav class="site-top-nav transparent">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/logo.png" alt="">
+                <strong>SchoolOldsMarket</strong>
+            </a>
+        </div>
+        <ul class="site-menu">
+            <li>
+                <a href="index.html">主页 </a>
+            </li>
+            <li>
+                <a href="#">商品搜索 <i class="fa fa-angle-down"></i></a>
+                <ul class="nav-dropdown">
+                    <li><a href="items.html">商品列表</a></li>
+                    <li><a href="search-results.html">商品搜索</a></li>
+                </ul>
+            </li>
+            <li><a href="#">控制面板 <i class="fa fa-angle-down"></i></a>
+                <ul class="nav-dropdown">
+                    <li><a href="dash-profile.html">个人信息</a></li>
+                    <li><a href="dash-items.html">商品列表</a></li>
+                    <li><a href="dash-sales.html">交易记录</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="cart.html">购物车</a>
+            </li>
+            <li>
+                <!--<a href="login-register.html" class="ui-btn ui-btn-info">登陆 / 注册</a>-->
+                <div class="site-user">
+                    <div class="site-user-img">
+                        <img src="img/avatar2.jpg" alt="">
+                        <span class="online"></span>
+                    </div>
+                    <a href="dash-profile.html" class="user-name"><strong>Emma Viola</strong></a>
+                </div>
+            </li>
+        </ul>
+        <i class="nav-toggle fa fa-bars"></i>
+    </nav>
+</div>
+<div id="side-nav" class="side-nav">
+    <div class="side-nav-menu perfect-scroll">
+        <div class="text-logo">
+            <a href="index.html"><h3>SOM平台</h3></a>
+        </div>
+        <div class="site-user">
+            <div class="site-user-img">
+                <img src="img/avatar2.jpg" alt="">
+                <span class="online"></span>
+            </div>
+            <a href="#" class="user-name"><strong>Emma Viola</strong></a>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html" class="current">首页</a></li>
+            <li><a href="items.html">商品列表</a></li>
+        </ul>
+        <div class="logout"><a href="login-register.html">退出登陆</a></div>
+    </div>
+</div>
+<!--end navigation bars-->
+
+<!--login/register form-->
+<div class="forms-wrapper">
+    <div class="forms-box">
+        <div class="side-content">
+            <div class="hoist animated fadeInLeft">
+                <div class="hoist-c">
+                    <i class="fa fa-users ui-text-warn"></i>
+                    <strong>现货市场</strong>
+                    <span>为你的商品提供市场</span>
+                </div>
+                <div class="hoist-c">
+                    <i class="fa fa-shopping-cart ui-text-danger"></i>
+                    <strong>即时付款</strong>
+                    <span>线下快速支付</span>
+                </div>
+                <div class="hoist-c">
+                    <i class="fa fa-percent ui-text-info"></i>
+                    <strong>独家销售</strong>
+                    <span>特别优惠和超值交易</span>
+                </div>
+            </div>
+        </div>
+        <div class="auth-forms">
+            <div class="switch-nav">
+                <a data-form="login-form" href="#" class="current">登陆</a>
+                <a data-form="register-form" href="#">注册</a>
+            </div>
+            <div class="forms-c">
+                <form action="#" method="post" class="login-form animated">
+                    <div class="form-group">
+                        <label for="loginNumber">登陆名</label>
+                        <input type="text" id="loginNumber" class="form-control" placeholder="请输入登陆名！">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <div class="site-password">
+                            <input type="password" id="loginPassword" class="form-control" placeholder="请输入密码！">
+                            <i class="reveal-password fa fa-eye" title="显示密码"></i>
+                        </div>
+                        <div class="forgot-password"><a href="#">忘记密码?</a></div>
+                    </div>
+                    <button type="button" class="form-control ui-btn ui-btn-info btn-shadow" id="loginBtn">登陆</button>
+                </form>
+                <form action="#" method="post" class="register-form animated">
+                    <div class="form-group">
+                        <label for="loginName">登陆名</label>
+                        <input type="email" id="loginName" class="form-control" placeholder="请输入6位的登陆名!">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" class="form-control" placeholder="如：someone@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <div class="site-password">
+                            <input type="password" id="password" class="form-control" placeholder="请输入6位以上的密码">
+                            <i class="reveal-password fa fa-eye" title="显示密码"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkPassword">确认密码</label>
+                        <div class="site-password">
+                            <input type="password" id="checkPassword" class="form-control" placeholder="请再次确认密码">
+                            <i class="reveal-password fa fa-eye" title="显示密码"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">性别</label>
+                        <select name="gender" id="gender" required class="form-control" title="">
+                            <option value="0">女</option>
+                            <option value="1">男</option>
+                            <option value="2">保密</option>
+                        </select>
+                    </div>
+                    <button type="button" class="form-control ui-btn ui-btn-info btn-shadow" id="registerBtn">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end login/register form-->
+
+<!--chat box-->
+<!--<a href="#" class="chat-box-btn"><i class="fa fa-comment icon-sw"></i></a>
+
+<div class="chat-box">
+    <div class="chat-top">
+        <section>
+            <h6 class="org-name">OldsMarket</h6>
+            <div class="repliers">
+                <div class="r-img">
+                    <img src="img/avatar2.jpg" alt="">
+                    <strong class="name">Megan</strong>
+                </div>
+                <div class="r-img">
+                    <img src="img/user2.jpg" alt="">
+                    <strong class="name">Brandon</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="chat-flow" id="chat-flow">
+        <p class="outbound">
+            Hallo, Anyone there?
+        </p>
+        <p class="inbound">
+            Hi, Vincent here. How may I be of service.
+        </p>
+    </div>
+    <form class="chat-form" action="#">
+        <input type="text" class="form-control chat-message" placeholder="Send a Message">
+    </form>
+</div>-->
+
+<!--end chat box-->
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="loader"><img src="img/logo.png" alt=""></div>
+</div>
+<!--end page loader-->
+
+<!--footer section-->
+<footer class="footer">
+    <div class="footer-item">
+        <strong>取得联系</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 支持</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 通知</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 社区论坛</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联盟伙伴</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联系我们</a>
+    </div>
+    <div class="footer-item">
+        <strong>疑问?</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 帮助</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 联系</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 在线客服</a>
+    </div>
+    <div class="footer-item">
+        <strong>相关网站</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 脸谱网</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 微博</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 网络相册</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 视频网站</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 人际关系网</a>
+    </div>
+    <div class="footer-item">
+        <strong>资源连接</strong>
+        <a href="#"><i class="fa fa-angle-right"></i> 首页</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 产品</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 服务</a>
+        <a href="#"><i class="fa fa-angle-right"></i> 关于我们</a>
+    </div>
+</footer>
+<div class="bottom-strip">
+    <div class="cards-accepted">
+        <em>Cards Accepted:</em>
+        <img src="img/card-logos.png" alt="">
+    </div>
+    <div class="copyright"><i class="fa fa-copyright"></i> <span>SchoolOldsMarket. 拥有相关所有权</span></div>
+    <div class="country"><!--<span>C.N</span><img src="img/USAFlag.png" alt="">--></div>
+</div>
+<!--end footer section-->
+
+<!--scripts-->
+<script src="vendor/js/jquery-3.2.1.min.js"></script>
+<script src="vendor/js/popper.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+<script src="vendor/js/alertify.js"></script>
+<script src="layer/layer.js"></script>
+<script src="vendor/js/jquery.knob.min.js"></script>
+<!--[if IE]><script type="text/javascript" src="vendor/js/excanvas.js"></script><![endif]-->
+<script src="vendor/js/summernote-bs4.min.js"></script>
+<script src="vendor/js/dropzone.js"></script>
+<script src="vendor/OwlCarousel2-2.2.1/owl.carousel.min.js"></script>
+<script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="vendor/js/typed.js"></script>
+<script src="js/app.js"></script>
+<!--end scripts-->
+<script >
+
+    /**
+     * 用户登陆
+     */
+    $("#loginBtn").on("click",function () {
+        //$("#password").val();
+
+        var loginNumber = $("#loginNumber").val();
+        var loginPassword = $("#loginPassword").val();
+
+        if(loginNumber == '' || loginNumber.length < 6 || loginNumber.length > 16){
+
+            if(loginNumber.length < 6 || loginNumber.length > 16){
+                alert("请输入登陆名，6~16位");
+            }else{
+                alert("请输入登陆名！");
+            }
+
+        }else if(loginPassword == ''|| loginPassword.length < 6 || loginPassword.length > 16){
+            if(loginPassword.length < 6 || loginPassword.length > 16){
+                alert("请输入6~16位的登陆密码");
+            }else{
+                alert("请输入登陆密码！");
+            }
+        }else{
+
+            $.ajax({
+                url:"http://localhost:8080/ctp/login",
+                type:"post",
+                data:{
+                    loginName:loginNumber,
+                    loginPassword:loginPassword
+                },
+                success:function (result) {
+                    // console.log("登陆")
+                    if(result.statuCode == 1){
+                        console.log(result.obj);
+                        var userInfo = JSON.stringify(result.obj);
+                        console.log(userInfo);
+                        sessionStorage.setItem("userInfo",userInfo);
+                        $.cookie("cart","[]");
+                        window.location.href="index.html";
+                    }else if(result.statuCode == "0"){
+                        alert("密码错误！");
+                        $("#loginPassword").focus();
+                    }else if(result.statuCode == 2){
+                        alert("不存在该账号，请注册！");
+                    }else if(result.statuCode == 3){
+                        alert("你未被授权，登陆失败！");
+                    }else{
+                        alert("未知错误！");
+                    }
+
+                },
+                error:function () {
+                    alert("登陆失败！");
+                }
+            })
+        }
+
+    });
+
+    /**
+     * 用户注册
+     */
+    $("#registerBtn").on("click",function () {
+        var loginName = $("#loginName").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var checkPassword = $("#checkPassword").val();
+        var gender = $("#gender").val();
+
+        var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+
+        if(loginName == ''){
+
+            if(loginName.length < 6 || loginName.length > 16){
+                alert("请输入登陆名，6~16位");
+                $("#loginName").focus();
+            }else{
+                alert("登陆名不能为空！");
+                $("#loginName").focus();
+            }
+
+        }else if(email == ''){
+            alert("邮箱不能为空！");
+            $("#email").focus();
+        }else if(!reg.test(email)){
+            alert("邮箱格式不对！");
+            $("#email").focus();
+        }else if(password == '' || password.length < 6 || password.length > 16){
+            if(password.length < 6 || password.length > 16){
+                alert("请输入6~16位的登陆密码");
+                $("#password").focus();
+            }else{
+                alert("密码不能为空！");
+                $("#password").focus();
+            }
+
+        }else if(checkPassword == ''){
+            alert("确认密码不能为空！");
+            $("#checkPassword").focus();
+        }else if(checkPassword != password){
+            alert("确认密码和密码不一致，请重新输入确认密码！");
+            $("#checkPassword").focus();
+        }else if(gender == ''){
+            alert("性别不能为空！");
+            $("#gender").focus();
+        }else{
+            $.ajax({
+                url:"http://localhost:8080/ctp/user/0",
+                type:"post",
+                data:{
+                    loginName:loginName,
+                    email:email,
+                    loginPwd:password,
+                    userName:loginName,
+                    userGrade:2,
+                    gender:gender
+                },
+                success:function (result) {
+                    console.log(result);
+                    if(result.statuCode == 1){
+                        var isChange = confirm("注册成功，是否立即登陆？");
+                        if(isChange){
+                            $.ajax({
+                                url:"http://localhost:8080/ctp/login",
+                                type:"post",
+                                data:{
+                                    loginName:result.obj.loginName,
+                                    loginPassword:result.obj.loginPwd
+                                },
+                                success:function (result) {
+                                    // console.log("登陆")
+                                    if(result.statuCode == 1){
+                                        console.log(result.obj);
+                                        var userInfo = JSON.stringify(result.obj);
+                                        console.log(userInfo);
+                                        sessionStorage.setItem("userInfo",userInfo);
+                                        $.cookie("cart","[]");
+                                        alertify.success("登陆成功！");
+                                        layer.msg("请注意尽快完善个人信息！3秒后跳转页面",{icon:8,time:3000},function () {
+                                            window.location.href="index.html";
+                                        });
+
+                                    }else if(result.statuCode == "0"){
+                                        alert("密码错误！");
+                                        $("#loginPassword").focus();
+                                    }else if(result.statuCode == 2){
+                                        alert("不存在该账号，请注册！");
+                                    }else if(result.statuCode == 3){
+                                        alert("你未被授权，登陆失败！");
+                                    }else{
+                                        alert("未知错误！");
+                                    }
+
+                                },
+                                error:function () {
+                                    alert("登陆失败！");
+                                }
+                            })
+                        }else{
+                            window.location.reload();
+                        }
+                    }else if(result.statuCode == 0){
+                        alert("用户注册失败！");
+                    }else if(result.statuCode == 2){
+                        alert("已有该用户，请重新注册！");
+                    }
+                },
+                error:function () {
+                    alert("用户注册失败！");
+                }
+            })
+        }
+
+    });
+
+
+    /**
+     * 登陆人的用户信息显示
+     * @type {string | null}
+     */
+    var checkLogin = sessionStorage.getItem("userInfo");
+    if(checkLogin == null){
+        console.log("login信息为空");
+        $(".site-top-nav .site-menu > li:last-child").empty();
+        var html = "";
+
+        html += "<a href='login-register.html' class='ui-btn ui-btn-info'>登陆 / 注册</a>";
+
+        $(".site-top-nav .site-menu > li:last-child").append(html);
+
+    }else{
+        console.log(checkLogin);
+        $(".site-top-nav .site-menu > li:last-child").empty();
+        var html = "";
+        var userInfo = JSON.parse(checkLogin);
+        html += "<div class='site-user'>\n" +
+            "                    <div class='site-user-img'>\n" +
+            "                        <img src='img/userimg/"+userInfo.headPortrait+"' alt=''>\n" +
+            "                        <span class='online'></span>\n" +
+            "                    </div>\n" +
+            "                    <a href='dash-profile.html' class='user-name'><strong>"+userInfo.userName+"</strong></a>\n" +
+            "                </div>";
+
+        $(".site-top-nav .site-menu > li:last-child").append(html);
+
+    }
+</script>
+
+</body>
+</html>

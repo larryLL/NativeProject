@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd,">
+<mapper namespace="com.shool.ctp.ordermag.mapper.OrderMapper">
+	<!-- 结果集的一行数据映射到DoctorBean类中 -->
+	<resultMap type="OrderBean" id="orderMap">
+		<id property="id" column="id" javaType="java.lang.Long"/>
+		<result property="orderNumber" column="order_number" javaType="string"/>
+		<result property="goodsPrice" column="goods_price" javaType="java.lang.Float"/>
+		<result property="goodsName" column="goods_name" javaType="string"/>
+		<result property="orderStatus" column="order_status" javaType="int"/>
+		<result property="buyQuantity" column="buy_goods_quantity" javaType="int"/>
+		
+		<result property="createTime" column="create_time" javaType="java.util.Date"/>
+		<result property="deleteTime" column="delete_time" javaType="java.util.Date"/>
+		<result property="deleteFlag" column="delete_flag" javaType="int"/>
+		
+		<result property="commodityPrice" column="commodity_price" javaType="java.lang.Float"/>
+		<result property="buyersName" column="buyers_name" javaType="string"/>
+		<result property="vendorName" column="vendor_name" javaType="string"/>
+		<result property="consigneeName" column="consignee_name" javaType="java.lang.Float"/>
+		<result property="telephoneNumber" column="telephone_number" javaType="string"/>
+		<result property="goodsNumber" column="goods_number" javaType="string"/>
+		<result property="buyerStatus" column="buyer_status" javaType="int"/>
+		<result property="vendorStatus" column="vendor_status" javaType="int"/>
+		
+		<association property="buyer" column="fk_buyer_id"
+			 javaType="com.shool.ctp.bean.UserBean" fetchType="lazy" 
+			 select="com.shool.ctp.usermag.mapper.UserMapper.getUserById"></association>
+		<association property="vendor" column="fk_vendor_id"
+			 javaType="com.shool.ctp.bean.UserBean" fetchType="lazy" 
+			 select="com.shool.ctp.usermag.mapper.UserMapper.getUserById"></association>
+		<!-- <association property="user" column="fk_user_id"
+			 javaType="com.shool.ctp.bean.UserBean" fetchType="lazy" 
+			 select="com.shool.ctp.usermag.mapper.UserMapper.getUserById"></association> -->
+	</resultMap>
+	
+	<!-- 查询用户的所有商品 -->
+	<!-- <select id="getGoodsByUserId" resultType="GoodsBean">
+		select * from t_goods where fk_user_id=#{id}
+	</select> -->
+	
+	<select id="getOrderById" parameterType="int" resultMap="orderMap">
+		select * from t_user_cart where id=#{id}
+	</select>
+	
+	<!-- 条件查询订单的数量 -->
+	<select id="countOrderBeanReturnPage" resultType="int">
+		select count(*) from t_order 
+		<where>
+			<if test="order.orderNumber != null and order.orderNumber != '' ">
+				and order_number = #{order.goodsName} 
+			</if>
+			<if test="order.goodsName != null ">
+				and goods_name like concat(#{order.goodsName},"%")
+			</if>
+			<if test="order.orderStatus != null ">
+				<if test="order.orderStatus == 12">
+					and (order_status = 1 or order_status = 2)
+				</if>
+				<if test="order.orderStatus != 12">
+					and order_status =#{order.orderStatus}
+				</if>
+			</if>
+			<if test="order.buyer != null">
+				<if test="order.buyer.id">
+					and fk_buyer_id = #{order.buyer.id}
+				</if>
+			</if>
+			<if test="order.vendor != null">
+				<if test="order.vendor.id">
+					and fk_vendor_id = #{order.vendor.id}
+				</if>
+			</if>
+			and delete_flag = 0
+		</where>
+	</select>
+	
+	<!-- 分页查询所有订单 -->
+	<select id="findOrderBeanReturnPage" resultMap="orderMap">
+		select * from t_order 
+		<where>
+			<if test="order.orderNumber != null and order.orderNumber != '' ">
+				and order_number = #{order.goodsName} 
+			</if>
+			<if test="order.goodsName != null ">
+				and goods_name like concat(#{order.goodsName},"%")
+			</if>
+			<if test="order.orderStatus != null ">
+				<if test="order.orderStatus == 12">
+					and (order_status = 1 or order_status = 2)
+				</if>
+				<if test="order.orderStatus != 12">
+					and order_status =#{order.orderStatus}
+				</if>
+			</if>
+			<if test="order.buyer != null">
+				<if test="order.buyer.id">
+					and fk_buyer_id = #{order.buyer.id}
+				</if>
+			</if>
+			<if test="order.vendor != null">
+				<if test="order.vendor.id">
+					and fk_vendor_id = #{order.vendor.id}
+				</if>
+			</if>
+			and delete_flag = 0
+		</where>
+		order by create_time desc
+		limit #{page.index},#{page.rows}
+	</select>
+	
+	<!-- 条件查询用户订单的数量 -->
+	<select id="countOrderBeanReturnPageByUser" resultType="int">
+		select count(*) from t_order 
+		where
+			(fk_buyer_id = #{userId} or fk_vendor_id = #{userId})
+			and delete_flag = 0
+			<if test="goodsName !='' and goodsName != null ">
+				and goods_name like concat(#{goodsName},'%')
+			</if>
+	</select>
+	
+	<!-- 分页查询用户所有订单 -->
+	<select id="findOrderBeanReturnPageByUser" resultMap="orderMap" >
+		select * from t_order 
+		where
+			(fk_buyer_id = #{userId} or fk_vendor_id = #{userId})
+			and delete_flag = 0
+			<if test="goodsName !='' and goodsName != null ">
+				and goods_name like concat(#{goodsName},'%')
+			</if>
+		order by create_time desc
+		limit #{page.index},#{page.rows}
+	</select>
+	
+	<!-- 获取用户本月的出售数量和金额 -->
+	<select id="getYearSalByUserId" resultType="java.util.HashMap">
+		select 
+			COUNT(*) yearNumber,
+			IFNULL(SUM(IFNULL(goods_price,0)*IFNULL(buy_goods_quantity,0)),0) yearSal  
+		from t_order 
+		where 
+			date_format(create_time,'%Y%m')=date_format(NOW(),'%Y%m') 
+			 and order_status = 4
+			 and fk_vendor_id= #{userId}
+	</select>
+	
+	<!-- 获取用户总的出售数量和金额 -->
+	<select id="getAllSalByUserId" resultType="java.util.HashMap">
+		select 
+			COUNT(*) allNumber,
+				IFNULL(SUM(IFNULL(goods_price,0)*IFNULL(buy_goods_quantity,0)),0) allSal 
+		from t_order 
+		where 
+			order_status = 4
+			and fk_vendor_id= #{userId}
+	</select>
+</mapper>

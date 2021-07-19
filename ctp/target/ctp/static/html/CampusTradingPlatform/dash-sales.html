@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--meta tags-->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Services Listing HTML5 CSS3 template">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript, services, listing">
+    <meta name="author" content="Ui-DesignLab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--end meta tags-->
+
+    <title>OldsMarket Dashboard</title>
+
+    <!--stylesheets-->
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/animate.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!--end stylesheets-->
+
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo%7CNosifer%7CPoppins%7CQuicksand:700%7CRaleway%7CTangerine%7CHind+Vadodara" rel="stylesheet">
+    <!--end google fonts-->
+    <style>
+        .dash-side-nav-wrapper .dash-side-nav .user-info .dash-user-img img{
+            width: 56px;
+            height: 56px;
+        }
+        .s-record .form-control{
+            /*border: none;*/
+            width: 100px;
+            height: 30px;
+            padding: 0 0.75rem;
+            font-size: 0.8rem;
+        }
+        .s-record select.form-control:not([size]):not([multiple]) {
+            height: calc(1.4rem + 2px);
+        }
+        .dash-pagination .current span {
+            text-transform: none;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="dashboard">
+
+     
+
+
+<!--top navigation-->
+<div class="top-nav">
+    <i class="fa fa-bars toggle-dash-menu"></i>
+    <ul class="list-inline">
+        <!--<li class="list-inline-item"><a href="#" class="show-search"><i class="fa fa-search"></i></a></li>-->
+        <li class="list-inline-item"><a href="cart.html"><i class="fa fa-cart-arrow-down"></i><!--<span><em>4</em></span>--></a></li>
+        <li class="list-inline-item"><a href="dashboard.html"><i class="fa fa-bell"></i><!--<span><em>8</em></span>--></a></li>
+        <li class="list-inline-item"><a href="dash-profile.html"><i class="fa fa-user"></i></a></li>
+    </ul>
+</div>
+<!--end top navigation-->
+
+<!--side navigation-->
+<div class="dash-side-nav-wrapper" id="dash-side-menu">
+    <div class="dash-side-nav perfect-scroll">
+        <div class="dash-logo">
+            <h5><a href="dashboard.html">SOM二手市场</a></h5>
+            <span>个人面板</span>
+        </div>
+        <div class="user-info">
+            <div class="dash-user-img"><img src="img/user2.jpg" alt=""></div>
+            <div class="dash-user-info">
+                <strong>Murethi Brian  N.</strong>
+                <br>
+                <span>Backend Developer</span>
+            </div>
+            <a href="dash-profile.html" class="dash-edit-user"><i class="fa fa-pencil"></i></a>
+        </div>
+        <ul class="list-unstyled dash-menu">
+            <li><a href="dash-profile.html"><i class="fa fa-user"></i><span>个人信息</span></a></li>
+            <li><a href="dash-sales.html" class="current"><i class="fa fa-money"></i><span>交易记录</span></a></li>
+            <li><a href="dash-items.html"><i class="fa fa-list-alt"></i><span>商品列表</span></a></li>
+            <li><a href="dash-addItem.html"><i class="fa fa-plus-circle"></i><span>新增商品</span></a></li>
+            <li><a href="index.html"><i class="fa fa-sign-out"></i><span>返回市场</span></a></li>
+            <li><a href="#" id="logOut"><i class="fa fa-sign-out"></i><span>退出登陆</span></a></li>
+        </ul>
+    </div>
+</div>
+<!--end side navigation-->
+
+<!--search box-->
+<div class="dash-search-box" id="dash-search-box">
+    <div class="d-search-box">
+        <form action="#" method="post">
+            <div class="form-group">
+                <input required list="ui-list" class="form-control" type="search" placeholder="Search">
+            </div>
+            <button class="btn"><i class="fa fa-search"></i></button>
+        </form>
+        <datalist id="ui-list">
+            <option>Monthly sales</option>
+            <option>Salaries</option>
+            <option>Invoice</option>
+            <option>Messages</option>
+            <option>Reviews</option>
+            <option>Active items</option>
+        </datalist>
+    </div>
+</div>
+<!--end search box-->
+
+<!--content container-->
+<div class="content-wrapper">
+
+<!--sales stats-->
+    <div class="sales-stats">
+        <div class="s-stat">
+            <h1 id="monthNumber">0</h1>
+            <strong>本月已出售</strong>
+        </div>
+        <div class="s-stat">
+            <h1 id="allNumber">0</h1>
+            <strong>已出售</strong>
+        </div>
+        <div class="s-stat">
+            <h1 id="monthSal"><span>$</span>0</h1>
+            <strong>本月出售金额</strong>
+        </div>
+        <div class="s-stat">
+            <h1 id="allSal"><span>$</span>0</h1>
+            <strong>总出售金额</strong>
+        </div>
+    </div>
+<!--end sales stats-->
+
+    <!--ux-box-->
+    <!--<div id="ux-box" class="ux-box-wrapper">
+        <div class="ux-box">
+            <strong>订单状态</strong>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="stt">
+                        <i class="fa fa-eye fa-2x"></i>
+                        <h6><strong>正在发货</strong></h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="stt">
+                        <i class="fa fa-comment-o fa-2x"></i>
+                        <h6><strong>7 Comments</strong></h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="stt">
+                        <i class="fa fa-twitter fa-2x"></i>
+                        <h6><strong>21 Shares</strong></h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="stt">
+                        <i class="fa fa-envelope-o fa-2x"></i>
+                        <h6><strong>3 Messages</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--end ux-box-->
+
+<!--sales records-->
+    <div class="sales-records">
+        <div class="sort-search">
+            <h6 class="st" style="width: 200px"><strong>商品交易记录</strong></h6>
+            <div class="sort st">
+                <select name="sort" class="form-control" title="" id="orderType">
+                    <option value="1">所有订单（购买、出售）</option>
+                    <option value="2">购买订单</option>
+                    <option value="3">出售订单</option>
+                    <option value="4">已购买</option>
+                    <option value="5">已出售</option>
+                </select>
+            </div>
+            <div class="search-rec st">
+                <input type="search" id="search" placeholder="商品名称搜索..." style="width: 230px;display:inline;margin-right: 10px" class="form-control">
+                <!--<button class="btn btn-info" id="search_record"><i class="fa fa-search"></i></button>-->
+                <a href="#" id="searchBtn" class="searchRecord" title="交易记录搜索"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <hr>
+        <div class="records" >
+            <div style="margin: 20px auto;color: #dddddd;font-size:20px"><center>正在获取数据......</center></div>
+            <!--<hr>
+            <section>
+                <div class="s-record"><strong>1)</strong> <span>Vintage Sports car</span></div>
+                <div class="s-record" style="margin-left: 5px"><em>下单日期</em><span>17 Feb, 2017</span></div>
+                <div class="s-record"><em>购买人</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>发布人</em><span>12 Jan, 2017</span></div>
+                <div class="s-record"><em>单价/购买数量</em><span>$123</span>/<span>3件</span></div>
+                <div class="s-record"><em>总价</em><span>$5625.00</span></div>
+                <div class="s-record">
+                    <em>状态</em>
+                    <select name="order_status" class="form-control" title="订单状态" >
+                        <option value="1">待交易</option>
+                        <option value="2" selected>正在交易</option>
+                        <option value="3">已取消</option>
+                        <option value="4">已交易</option>
+                    </select>
+                </div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>2)</strong> <span>2010 Dish Washer</span></div>
+                <div class="s-record"><em>Listed</em><span>22 Oct, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>06 Feb, 2018</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$265.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>3)</strong> <span>Vintage Sports car</span></div>
+                <div class="s-record"><em>Listed</em><span>12 Jan, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>17 Feb, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$5625.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>4)</strong> <span>Lawn Mower</span></div>
+                <div class="s-record"><em>Listed</em><span>30 Apr, 2016</span></div>
+                <div class="s-record"><em>Sold</em><span>16 Jan, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span style='color: #76EE00'>交易成功</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>5)</strong> <span>2010 Dish Washer</span></div>
+                <div class="s-record"><em>Listed</em><span>22 Oct, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>06 Feb, 2018</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$265.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>6)</strong> <span>Vintage Sports car</span></div>
+                <div class="s-record"><em>Listed</em><span>12 Jan, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>17 Feb, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$5625.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>7)</strong> <span>Lawn Mower</span></div>
+                <div class="s-record"><em>Listed</em><span>30 Apr, 2016</span></div>
+                <div class="s-record"><em>Sold</em><span>16 Jan, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$300.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>8)</strong> <span>Vintage Sports car</span></div>
+                <div class="s-record"><em>Listed</em><span>12 Jan, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>17 Feb, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$5625.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>9)</strong> <span>Lawn Mower</span></div>
+                <div class="s-record"><em>Listed</em><span>30 Apr, 2016</span></div>
+                <div class="s-record"><em>Sold</em><span>16 Jan, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$300.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>10)</strong> <span>2010 Dish Washer</span></div>
+                <div class="s-record"><em>Listed</em><span>22 Oct, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>06 Feb, 2018</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$265.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>11)</strong> <span>Vintage Sports car</span></div>
+                <div class="s-record"><em>Listed</em><span>12 Jan, 2017</span></div>
+                <div class="s-record"><em>Sold</em><span>17 Feb, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$5625.00</span></div>
+            </section>
+            <hr>
+            <section>
+                <div class="s-record"><strong>12)</strong> <span>Lawn Mower</span></div>
+                <div class="s-record"><em>Listed</em><span>30 Apr, 2016</span></div>
+                <div class="s-record"><em>Sold</em><span>16 Jan, 2017</span></div>
+                <div class="s-record"><em>Buyer</em><span>buyer@eg.com</span></div>
+                <div class="s-record"><em>Price</em><span>$300.00</span></div>
+            </section>-->
+        </div>
+
+
+        <hr>
+        <div class="dash-pagination">
+            <a href="#" id="pre"><i class="fa fa-angle-left"></i></a>
+            <a href="#" class="current">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#" id="next"><i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+<!--end sales records-->
+
+</div>
+<!--end content container-->
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="loader"><img src="img/logo.png" alt=""></div>
+</div>
+<!--end page loader-->
+
+<!--scripts-->
+<script src="vendor/js/jquery-3.2.1.min.js"></script>
+<script src="vendor/js/popper.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+<script src="layer/layer.js"></script>
+<script src="vendor/js/alertify.js"></script>
+<script src="vendor/js/jquery.knob.min.js"></script>
+<!--[if IE]><script type="text/javascript" src="vendor/js/excanvas.js"></script><![endif]-->
+<script src="vendor/js/summernote-bs4.min.js"></script>
+<script src="vendor/js/dropzone.js"></script>
+<script src="vendor/OwlCarousel2-2.2.1/owl.carousel.min.js"></script>
+<script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="vendor/js/typed.js"></script>
+<script src="js/app.js"></script>
+<!--end scripts-->
+<script>
+
+
+    /**
+     * 时间戳转日期格式
+     */
+    function formatDate(timestamp) {
+        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        var D = date.getDate() + ' ';
+        return Y+M+D;
+    }
+
+    /**
+     * 登陆验证
+     */
+    var checkLogin = sessionStorage.getItem("userInfo");
+
+    // 保存用户信息
+    var userInfo;
+    if(checkLogin == null){
+        $("body").empty();
+        var html = "<center><h3 style='margin-top: 40px'>您未登录，请先登录！</h3></center>";
+        $("body").append(html);
+        alert("未登录，请先登陆！");
+        window.location.href="login-register.html";
+    }else{
+        userInfo = JSON.parse(checkLogin);
+        $(".dash-user-img").find("img").attr("src","img/userimg/"+userInfo.headPortrait);
+        $(".dash-user-info").find("strong").text("用户名："+userInfo.userName);
+        $(".dash-user-info").find("span").text("真实姓名："+userInfo.realName);
+    }
+
+    var page = 1;
+    var limit = 2;
+    var resultOrders = {};
+
+    /**
+     * 拼接订单信息
+     * @param resultOrders
+     * @param page
+     */
+    var setOrder=function (resultOrders,page) {
+        var userInfo = JSON.parse(checkLogin);
+        layer.load(2,{
+            shade:[0.3,'#dddddd']
+        });
+        $.ajax({
+            url:"http://localhost:8080/ctp/user/order/"+userInfo.id,
+            type:"get",
+            dataType:"json",
+            data:{
+                page : page,
+                limit : limit,
+                type : $("#orderType").val(),
+                goodsName:$("#search").val()
+            },
+            success:function (result) {
+                resultOrders = result;
+                console.log(result);
+                if(result.code == 1 && result.data.length > 0){
+                    
+                    /**
+                     * 设置月销售量、总销售量、月销售额、总销售额
+                     */
+                    $("#monthNumber").text(result.obj.monthNumber);
+                    $("#monthSal").html("<span>$</span>"+result.obj.monthSal);
+                    $("#allNumber").text(result.obj.allNumber);
+                    $("#allSal").html("<span>$</span>"+result.obj.allSal);
+
+                    $(".records").empty();
+                    $(".dash-pagination").empty();
+                    var recordHtml = "";
+                    var data = result.data;
+                    /**
+                     * 拼接订单记录
+                     */
+                    for(var i = 0;i<data.length;i++){
+                        recordHtml += "<hr>\n" +
+                            "            <section>\n" +
+                            "                <div class='s-record'><strong>"+(i*page+1)+")</strong> <span>"+data[i].goodsName+"</span></div>\n" +
+                            "                <div class='s-record' style='margin-left: 5px'><em>商品编号</em><span>"+data[i].orderNumber+"</span></div>\n" +
+                            "                <div class='s-record' style='margin-left: 5px'><em>下单日期</em><span>"+formatDate(data[i].createTime)+"</span></div>\n" +
+                            "                <div class='s-record'><em>购买人</em><span>"+data[i].buyer.userName+"</span></div>\n" +
+                            "                <div class='s-record'><em>发布人</em><span>"+data[i].vendor.userName+"</span></div>\n" +
+                            "                <div class='s-record'><em>单价/购买数量</em><span>$"+data[i].goods.goodsPrice+"</span>/<span>"+data[i].buyQuantity+"件</span></div>\n" +
+                            "                <div class='s-record'><em>总价</em><span>$"+data[i].commodityPrice+"</span></div>\n" +
+                            "                <div class='s-record'>\n" +
+                            "                    <em>状态</em>\n" ;
+                        if(data[i].orderStatus == 3){
+                            recordHtml += "<span style='color: red'>交易已取消</span>\n";
+                        }
+                        else if(data[i].orderStatus == 4){
+                            recordHtml += "<span style='color: #76EE00'>交易成功</span>\n";
+                        }else{
+                            // 判断是否是购买人，显示不同的订单状态
+                            if(userInfo.id == data[i].buyer.id){
+                                recordHtml +="                    <select name='order_status' orderId='"+data[i].id+"' class='form-control order_status' title='订单状态' >\n"+
+                                    "                        <option value='1' ";
+                                if(data[i].orderStatus == 1){ recordHtml+="selected "}
+                                recordHtml += ">待交易</option>\n"+
+                                    "                        <option value='2' ";
+                                if(data[i].orderStatus == 2){ recordHtml+="selected "}
+                                recordHtml += ">正在交易</option>\n" +
+                                    "                        <option value='4'";
+                                if(data[i].orderStatus == 4){ recordHtml+="selected "}
+                                recordHtml += ">交易成功</option>\n" +
+                                    "                        <option value='3' "
+                                if(data[i].orderStatus == 3){ recordHtml+="selected "}
+                                recordHtml += ">取消交易</option>\n" +
+                                    "                    </select>\n";
+                            }else{
+                                recordHtml += "<span style='color: #ffe305'>正在交易...</span>\n";
+                            }
+
+                        }
+                        recordHtml += "                </div>\n" +
+                            "            </section>"
+                    }
+
+                    $(".records").append(recordHtml);
+
+                    /**
+                     * 订单状态下拉框
+                     */
+                    $(".order_status").data("changeBefore",$(".order_status").val()).on("change",function () {
+                        var ele = $(this);
+                        // 获取下拉框改变之前的值
+                        var beforeValue = $(this).data("changeBefore");
+                        // 需要改变的值
+                        var changeValue = ele.val();
+                        /**
+                         * 修改订单状态的ajax
+                         */
+                        function changeOrderStatus(orderId,orderStatus) {
+                            $.ajax({
+                                url:"http://localhost:8080/ctp/order/"+orderId,
+                                type:"put",
+                                data:{
+                                    orderStatus:orderStatus
+                                },
+                                dataType:"json",
+                                success:function (result) {
+                                    console.log(result);
+                                    if(result.success){
+                                        alertify.success(result.message);
+                                        setOrder(result,$(".dash-pagination .current").text());
+                                    }else{
+                                        alertify.error(result.message);
+                                        ele.val(beforeValue);
+                                    }
+
+                                },
+                                error:function (result) {
+                                    alertify.error("修改错误！请联系管理员！");
+                                    ele.val(beforeValue);
+                                }
+                            });
+                        }
+                        if(changeValue == "3"){
+                            alertify.confirm("确定要取消订单吗？",function () {
+                                changeOrderStatus(ele.attr("orderId"),changeValue);
+                                alertify.success("订单已取消！");
+                            },function () {
+                                ele.val(beforeValue);
+                            });
+                        }
+                        else if(changeValue == "4"){
+                            alertify.confirm("订单交易成功后无法修改状态订单状态！",function () {
+                                changeOrderStatus(ele.attr("orderId"),changeValue);
+                            },function () {
+                                ele.val(beforeValue);
+                            })
+                        }else{
+                            changeOrderStatus(ele.attr("orderId"),changeValue);
+                        }
+                    });
+
+                    var pageHtml = "";
+                    pageHtml += "<a href='javascript:void(0)' id='pre'><i class='fa fa-angle-left'></i></a>";
+                    /**
+                     * 拼接页码
+                     */
+                    for(var i = 0;i<result.totalPage;i++){
+                        if(result.page==(i+1)){
+                            pageHtml += "<a href='javascript:void(0)' class='pageNumber current'><span>"+(i+1)+"</span></a>";
+                        }else{
+                            pageHtml += "<a href='javascript:void(0)' class='pageNumber'><span><i>"+(i+1)+"</i></span></a>";
+                        }
+                    }
+                    pageHtml += "<a href='javascript:void(0)' id='next'><i class='fa fa-angle-right'></i></a>";
+                    $(".dash-pagination").append(pageHtml);
+                    /**
+                     * 页码点击
+                     */
+                    $(".pageNumber").on("click",function () {
+                        setOrder(result,$(this).text());
+                    });
+                    /**
+                     * 上一页点击
+                     */
+                    $("#pre").click(function () {
+                        if(result.page ==1){
+                            setOrder(result,result.page);
+                        }else{
+                            setOrder(result,result.page-1);
+                        }
+                    });
+                    /**
+                     * 下一页点击
+                     */
+                    $("#next").click(function () {
+                        if(result.page ==result.totalPage){
+                            setOrder(result,result.totalPage);
+                        }else{
+                            setOrder(result,result.page+1);
+                        }
+                    });
+                    layer.closeAll();
+                }else if(result.code == 1 && result.data.length == 0){
+                    $(".records").empty();
+                    $(".dash-pagination").empty();
+                    var html = "<div style='margin: 20px auto;color: red;font-size:20px'><center>暂无交易记录</center></div>";
+                    $(".records").append(html);
+                    layer.closeAll();
+                }else{
+                    layer.closeAll();
+                    alertify.error("服务器错误，请联系管理员！");
+                }
+
+
+            },error:function () {
+                console.log("下单请求失败！");
+                layer.closeAll();
+            }
+        });
+    };
+    setOrder(resultOrders,1);
+
+    /**
+     * 下拉框切换
+     */
+    $("#orderType").on("change",function () {
+       console.log($(this).val());
+        setOrder(resultOrders,1);
+    });
+
+    /**
+     * 搜索框按钮
+     */
+    $("#searchBtn").on("click",function () {
+        setOrder(resultOrders,1);
+    });
+
+</script>
+
+</body>
+</html>

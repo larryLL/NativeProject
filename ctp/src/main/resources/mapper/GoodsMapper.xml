@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd,">
+<mapper namespace="com.shool.ctp.goodsmag.mapper.GoodsMapper">
+	<!-- 结果集的一行数据映射到DoctorBean类中 -->
+	<resultMap type="GoodsBean" id="goodsMap">
+		<id property="id" column="id" javaType="java.lang.Long"/>
+		<result property="goodsName" column="goods_name" javaType="string"/>
+		<result property="goodsDetail" column="goods_detail" javaType="string"/>
+		<result property="image" column="goods_image" javaType="string"/>
+		<result property="goodsDegree" column="goods_degree" javaType="java.lang.Float"/>
+		<result property="goodsOriginalPrice" column="goods_original_price" javaType="java.lang.Float"/>
+		<result property="goodsPrice" column="goods_price" javaType="java.lang.Float"/>
+		<result property="goodsQuantity" column="goods_quantity" javaType="int"/>
+		<result property="goodsStatus" column="goods_status" javaType="int"/>
+		<result property="registerTime" column="register_time" javaType="java.util.Date"/>
+		<result property="createTime" column="create_time" javaType="java.util.Date"/>
+		<result property="updateTime" column="update_time" javaType="java.util.Date"/>
+		<result property="deleteTime" column="delete_time" javaType="java.util.Date"/>
+		<result property="deleteFlag" column="delete_flag" javaType="int"/>
+		<result property="goodsNumber" column="goods_number" javaType="string"/>
+		<result property="tradingPlace" column="trading_place" javaType="string"/>
+		<result property="goodsSurplus" column="goods_surplus" javaType="int"/>
+		<result property="saleQuantity" column="sale_quantity" javaType="int"/>
+		<association property="user" column="fk_user_id"
+			 javaType="com.shool.ctp.bean.UserBean" fetchType="lazy" select="com.shool.ctp.usermag.mapper.UserMapper.getUserById"></association>
+		<association property="type" column="fk_goodstype_id" 
+			javaType="GoodsTypeBean" fetchType="lazy" select="com.shool.ctp.goodsmag.mapper.GoodsTypeMapper.getGoodsTypeById"></association>
+	
+	</resultMap>
+	
+	<!-- 查询用户的所有商品 -->
+	<select id="getGoodsByUserId" resultMap="goodsMap">
+		select * from t_goods where fk_user_id=#{id}
+	</select>
+	
+	<select id="getGoodsById" parameterType="int" resultMap="goodsMap">
+		select * from t_goods where id=#{id}
+	</select>
+	
+	<select id="checkGoodsByGoodsName" resultType="int">
+		select count(*) from t_goods where goods_name = #{goodsName}
+	</select>
+	
+	<!-- <insert id="addGoods" useGeneratedKeys="true" keyProperty="goods.id" >
+		insert into t_goods(
+		<trim suffixOverrides=",">
+			<if test="goods.goodsName != null and goods.goodsName != '' ">
+				goods_name,
+			</if>
+			<if test="goods.goodsDetail != null and goods.goodsDetail != '' ">
+				goods_detail,
+			</if>
+			<if test="goods.image != null and goods.image != '' ">
+				goods_image,
+			</if>
+			<if test="goods.goodsDegree != null ">
+				goods_degree,
+			</if>
+			<if test="goods.goodsOriginalPrice != null ">
+				goods_original_price,
+			</if>
+			<if test="goods.goodsPrice != null ">
+				goods_price,
+			</if>
+			<if test="goods.goodsQuantity != null ">
+				goods_quantity,
+			</if>
+			<if test="goods.goodsStatus != null ">
+				goods_status,
+			</if>
+			<if test="goods.registerTime != null ">
+				register_time,
+			</if>
+			<if test="goods.createTime != null ">
+				create_time,
+			</if>
+			<if test="goods.updateTime != null ">
+				update_time,
+			</if>
+			delete_flag
+		</trim>
+			 
+		) value(
+		<trim suffixOverrides=",">
+			<if test="goods.goodsName != null and goods.goodsName != '' ">
+				#{goods.goodsName},
+			</if>
+			<if test="goods.goodsDetail != null and goods.goodsDetail != '' ">
+				#{goods.goodsDetail},
+			</if>
+			<if test="goods.image != null and goods.image != '' ">
+				#{goods.image},
+			</if>
+			<if test="goods.goodsDegree != null ">
+				#{goods.goodsDegree},
+			</if>
+			<if test="goods.goodsOriginalPrice != null ">
+				#{goods.goodsOriginalPrice},
+			</if>
+			<if test="goods.goodsPrice != null ">
+				#{goods.goodsPrice},
+			</if>
+			<if test="goods.goodsQuantity != null ">
+				#{goods.goodsQuantity},
+			</if>
+			<if test="goods.goodsStatus != null ">
+				#{goods.goodsStatus},
+			</if>
+			<if test="goods.registerTime != null ">
+				#{goods.registerTime},
+			</if>
+			<if test="goods.createTime != null ">
+				#{goods.createTime},
+			</if>
+			<if test="goods.updateTime != null ">
+				#{goods.updateTime},
+			</if>
+			0
+		</trim>
+		)
+	</insert>
+	修改商品信息
+	<update id="updateGoods">
+	update t_goods 
+	<set>
+		<if test="goods.goodsName != null and goods.goodsName != '' ">
+				goods_name=#{goods.goodsName},
+			</if>
+			<if test="goods.goodsDetail != null and goods.goodsDetail != '' ">
+				goods_detail=#{goods.goodsDetail},
+			</if>
+			<if test="goods.image != null and goods.image != '' ">
+				goods_image=#{goods.image},
+			</if>
+			<if test="goods.goodsDegree != null ">
+				goods_degree=#{goods.goodsDegree},
+			</if>
+			<if test="goods.goodsOriginalPrice != null ">
+				goods_original_price=#{goods.goodsOriginalPrice},
+			</if>
+			<if test="goods.goodsPrice != null ">
+				goods_price=#{goods.goodsPrice},
+			</if>
+			<if test="goods.goodsQuantity != null ">
+				goods_quantity=#{goods.goodsQuantity},
+			</if>
+			<if test="goods.goodsStatus != null ">
+				goods_status=#{goods.goodsStatus},
+			</if>
+			<if test="goods.registerTime != null ">
+				register_time=#{goods.registerTime},
+			</if>
+			<if test="goods.updateTime != null ">
+				update_time=#{goods.updateTime},
+			</if>
+	</set>
+	</update> -->
+	
+	<!-- 删除商品信息 -->
+	<!-- <update id="deleteGoods" >
+		update t_goods set delete_flag = 1,delete_time = now() where id = #{id}
+	</update> -->
+	
+	<!-- 条件查询商品的数量 -->
+	<select id="countGoodsBeanReturnPage" resultType="int">
+		select count(*) from t_goods 
+		<where>
+			<if test="goods.goodsName != null and goods.goodsName != '' ">
+				and goods_name like concat(#{goods.goodsName},'%') 
+			</if>
+			<if test="goods.goodsDegree != null ">
+				and goods_degree = #{goods.goodsDegree}
+			</if>
+			<if test="goods.goodsPrice != null ">
+				and goods_price = #{goods.goodsPrice}
+			</if>
+			<if test="goods.goodsNumber != null ">
+				and goods_number like concat(#{goods.goodsNumber},'%') 
+			</if>
+			<if test="goods.goodsStatus != null ">
+				and goods_status = #{goods.goodsStatus}
+			</if>
+			<if test="goods.registerTime != null ">
+				and register_time = #{goods.registerTime}
+			</if>
+			<if test="goods.user != null">
+				<if test="goods.user.id !=null">
+					and fk_user_id=#{goods.user.id}
+				</if>
+			</if>
+			<if test="goods.type != null">
+				<if test="goods.type.id !=null">
+					and fk_goodstype_id=#{goods.type.id}
+				</if>
+			</if>
+			<if test="goods.goodsQuantity == null ">
+				and goods_surplus > 0
+			</if>
+			and delete_flag = 0
+		</where>
+	</select>
+	
+	<select id="findGoodsBeanReturnPage" resultMap="goodsMap">
+		select * from t_goods 
+		<where>
+			<if test="goods.goodsName != null and goods.goodsName != '' ">
+				and goods_name like concat(#{goods.goodsName},'%') 
+			</if>
+			<if test="goods.goodsDegree != null ">
+				and goods_degree = #{goods.goodsDegree}
+			</if>
+			<if test="goods.goodsPrice != null ">
+				and goods_price = #{goods.goodsPrice}
+			</if>
+			<if test="goods.goodsNumber != null ">
+				and goods_number like concat(#{goods.goodsNumber},'%') 
+			</if>
+			<if test="goods.goodsStatus != null ">
+				and goods_status = #{goods.goodsStatus}
+			</if>
+			<if test="goods.registerTime != null ">
+				and register_time = #{goods.registerTime}
+			</if>
+			<if test="goods.user != null">
+				<if test="goods.user.id !=null">
+					and fk_user_id=#{goods.user.id}
+				</if>
+			</if>
+			<if test="goods.type != null">
+				<if test="goods.type.id !=null">
+					and fk_goodstype_id=#{goods.type.id}
+				</if>
+			</if>
+			<if test="goods.goodsQuantity == null ">
+				and goods_surplus > 0
+			</if>
+			and delete_flag = 0 
+		</where>
+		order by  
+		<if test="page.orderName == 'createTime'">
+			create_time
+		</if>
+		<if test="page.orderName == 'price' ">
+			goods_price
+		</if>
+		<if test="page.orderType == 'desc' ">
+			desc
+		</if>
+		 <if test="page.orderType == 'asc' ">
+			asc
+		</if>
+		<if test="(page.orderName == null or page.orderName == '') and (page.orderType == null or page.orderType == '')">
+			create_time desc
+		</if>
+		limit #{page.index},#{page.rows}
+	</select>
+	
+	<!-- 根据编号查询商品 -->
+	<select id="selectGoodsByGoodsNumber" resultMap="goodsMap">
+		select * from t_goods Where goods_number = #{goodsNumber}
+	</select>
+	
+	<!-- 获取用户出售的商品数量 -->
+	<select id="getSaleCountByUserId" resultType="int">
+		select IFNULL(SUM(sale_quantity),0) saleSum from t_goods where fk_user_id = #{userid} and delete_flag = 0
+	</select>
+	
+	<!-- 获取用户删除的商品数量 -->
+	<select id="getDeleteCountByUserId" resultType="int">
+		select IFNULL(COUNT(delete_flag),0) deleteSum from t_goods where fk_user_id = #{userid} and delete_flag = 1
+	</select>
+</mapper>
